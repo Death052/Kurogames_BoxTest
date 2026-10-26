@@ -1,7 +1,38 @@
-[gd_scene format=3 uid="uid://biqcegxyrv1mm"]
+[gd_scene format=4 uid="uid://biqcegxyrv1mm"]
 
 [ext_resource type="PackedScene" uid="uid://dmvtaqgbv45cx" path="res://Entities/Player/Player.tscn" id="1_x87qo"]
+[ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="2_b6fju"]
+[ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="3_fiftr"]
+[ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="4_fiftr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h5vk"]
+size = Vector2(16, 8)
 
 [node name="GameScene" type="Node2D" unique_id=472067679]
 
 [node name="CharacterBody2D" parent="." unique_id=120814942 instance=ExtResource("1_x87qo")]
+movementSpeed = 100.0
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1528324532]
+position = Vector2(0, -25)
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=1671609316]
+texture = ExtResource("2_b6fju")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=1350596211]
+shape = SubResource("RectangleShape2D_6h5vk")
+
+[node name="Tilemap" type="Node" parent="." unique_id=1608148775]
+
+[node name="Ground" type="TileMapLayer" parent="Tilemap" unique_id=1319352940]
+z_index = -10
+tile_map_data = PackedByteArray("AAD//wAAAAAAAAIAAAAAAAAAAAABAAIAAAABAAAAAAABAAIAAAACAAAAAAABAAIAAAADAAAAAAACAAIAAAADAP7/AAACAAEAAAADAP//AAACAAEAAAADAP3/AAACAAEAAAADAPz/AAACAAEAAAADAPv/AAACAAAAAAACAPv/AAABAAAAAAABAPv/AAABAAAAAAAAAPv/AAABAAAAAAD///v/AAAAAAAAAAD///z/AAAAAAEAAAD///3/AAAAAAEAAAD///7/AAAAAAEAAAD/////AAAAAAEAAAAAAP//AAABAAEAAAABAP//AAABAAEAAAACAP//AAABAAEAAAACAP7/AAABAAEAAAACAP3/AAABAAEAAAABAPz/AAABAAEAAAABAP3/AAABAAEAAAAAAP3/AAABAAEAAAAAAP7/AAABAAEAAAABAP7/AAABAAEAAAAAAPz/AAABAAEAAAACAPz/AAABAAEAAAA=")
+tile_set = ExtResource("3_fiftr")
+
+[node name="Water" type="TileMapLayer" parent="Tilemap" unique_id=254551112]
+z_index = -30
+tile_map_data = PackedByteArray("AAAEAP//AAAAAAAAAAAFAP//AAAAAAAAAAAEAP7/AAAAAAAAAAAFAP7/AAAAAAAAAAAFAP3/AAAAAAAAAAAEAP3/AAAAAAAAAAAEAPz/AAAAAAAAAAAEAPv/AAAAAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAAAAAAAAAAEAPr/AAAAAAAAAAAFAPr/AAAAAAAAAAADAPr/AAAAAAAAAAACAPr/AAAAAAAAAAABAPr/AAAAAAAAAAAAAPr/AAAAAAAAAAD///r/AAAAAAAAAAD+//r/AAAAAAAAAAD9//r/AAAAAAAAAAD9//v/AAAAAAAAAAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD+////AAAAAAAAAAD+//7/AAAAAAAAAAD+//3/AAAAAAAAAAD+//z/AAAAAAAAAAD+//v/AAAAAAAAAAD+/wEAAAAAAAAAAAD9/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAAFAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAD9/wIAAAAAAAAAAAD+/wIAAAAAAAAAAAD//wIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAIAAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAD9//n/AAAAAAAAAAD+//n/AAAAAAAAAAD///n/AAAAAAAAAAAAAPn/AAAAAAAAAAABAPn/AAAAAAAAAAACAPn/AAAAAAAAAAADAPn/AAAAAAAAAAAEAPn/AAAAAAAAAAAFAPn/AAAAAAAAAAA=")
+tile_set = ExtResource("4_fiftr")

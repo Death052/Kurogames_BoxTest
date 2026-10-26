@@ -4,20 +4,23 @@
 [ext_resource type="Script" uid="uid://b4ynco0a6x5lb" path="res://Entities/Player/player.gd" id="1_ww0jn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqyrl"]
-size = Vector2(20, 16)
+size = Vector2(9.25, 14)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=120814942]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 13
 script = ExtResource("1_ww0jn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1608398219]
-position = Vector2(0, 8)
+position = Vector2(0.375, 9)
 shape = SubResource("RectangleShape2D_oqyrl")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1325773384]
 texture = ExtResource("1_e5kic")
 hframes = 24
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1927324574]
+zoom = Vector2(3, 3)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1002865864]
 
