@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dnkamynx16s2s"]
+
+[ext_resource type="Script" uid="uid://cvcdg4lybyp5b" path="res://Entities/Box/Pushable.gd" id="1_4nqb4"]
+[ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="1_py74a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6h5vk"]
+size = Vector2(16, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nqb4"]
+size = Vector2(18, 11)
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=723686871]
+collision_layer = 4
+collision_mask = 2
+gravity_scale = 0.0
+script = ExtResource("1_4nqb4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=142883538]
+texture = ExtResource("1_py74a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=817586825]
+shape = SubResource("RectangleShape2D_6h5vk")
+
+[node name="CheckPlayer" type="Area2D" parent="." unique_id=1660682259]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPlayer" unique_id=1240177339]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_4nqb4")
+
+[connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
+[connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]

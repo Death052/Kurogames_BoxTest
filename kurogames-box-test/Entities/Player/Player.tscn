@@ -2,11 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://bwibuesdh4qip" path="res://Sprites/Entities/character_full.png" id="1_e5kic"]
 [ext_resource type="Script" uid="uid://b4ynco0a6x5lb" path="res://Entities/Player/player.gd" id="1_ww0jn"]
+[ext_resource type="Script" uid="uid://cg5ihyyivwedy" path="res://Systems/StateMachine.gd" id="3_vweq0"]
+[ext_resource type="Script" uid="uid://canu1d4i7nho8" path="res://Entities/Player/player_idle.gd" id="4_an6q6"]
+[ext_resource type="Script" uid="uid://bic8ta7xpue6j" path="res://Entities/Player/player_push.gd" id="5_t38ms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oqyrl"]
 size = Vector2(9.25, 14)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=120814942]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=120814942 groups=["Player"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_ww0jn")
@@ -23,5 +26,11 @@ hframes = 24
 zoom = Vector2(3, 3)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1002865864]
+script = ExtResource("3_vweq0")
+initial_state_path = NodePath("IdleState")
 
 [node name="IdleState" type="Node" parent="StateMachine" unique_id=118348260]
+script = ExtResource("4_an6q6")
+
+[node name="PushState" type="Node" parent="StateMachine" unique_id=672442288]
+script = ExtResource("5_t38ms")
