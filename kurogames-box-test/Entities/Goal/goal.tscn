@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://bdqk3qfih01e3"]
+
+[ext_resource type="Texture2D" uid="uid://ci8c5cse7ec6u" path="res://Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="1_r8bwl"]
+
+[sub_resource type="Animation" id="Animation_2fmhe"]
+resource_name = "Goal Activated"
+length = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_1ixah"]
+resource_name = "Goal Deactivated"
+length = 0.06666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_rgj8m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2fmhe"]
+_data = {
+&"Goal Activated": SubResource("Animation_2fmhe"),
+&"Goal Deactivated": SubResource("Animation_1ixah"),
+&"RESET": SubResource("Animation_rgj8m")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1ixah"]
+size = Vector2(40, 31)
+
+[node name="Goal" type="Node2D" unique_id=2100462803]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1641352491]
+texture = ExtResource("1_r8bwl")
+hframes = 3
+vframes = 2
+frame = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1443586967]
+libraries/ = SubResource("AnimationLibrary_2fmhe")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=206727670]
+collision_layer = 16
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=339131977]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_1ixah")

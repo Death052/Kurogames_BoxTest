@@ -5,4 +5,5 @@ func enter() -> void:
 
 func physics_update(delta: float) -> void:
 	# wait until the its confirmed the player interacted with a push object
-	state_machine.transition_to("player")
+	if actor.in_push_state == true:
+		state_machine.transition_to("PushState")

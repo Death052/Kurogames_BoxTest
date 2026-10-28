@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dnkamynx16s2s"]
 
-[ext_resource type="Script" uid="uid://cvcdg4lybyp5b" path="res://Entities/Box/Pushable.gd" id="1_4nqb4"]
+[ext_resource type="Script" uid="uid://bb5qmbvfaiqbr" path="res://Entities/Box Pair/Box/Box.gd" id="1_4nqb4"]
 [ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="1_py74a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h5vk"]
@@ -9,11 +9,12 @@ size = Vector2(16, 8)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nqb4"]
 size = Vector2(18, 11)
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=723686871]
+[node name="Box" type="RigidBody2D" unique_id=723686871 groups=["Box"]]
 collision_layer = 4
-collision_mask = 2
-gravity_scale = 0.0
+collision_mask = 10
+gravity_scale = -8.0
 script = ExtResource("1_4nqb4")
+push_mass = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=142883538]
 texture = ExtResource("1_py74a")

@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cpkeshjrahhls"]
+
+[ext_resource type="Script" uid="uid://bghkh0mdjxojg" path="res://Entities/Box Pair/Box Goal/box_goal.gd" id="1_7nau1"]
+[ext_resource type="Texture2D" uid="uid://nl00m0ln3t2h" path="res://Sprites/Entities/box_goal_white.png" id="1_y4xja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rgj8m"]
+size = Vector2(18, 14)
+
+[node name="BoxGoal" type="Area2D" unique_id=1128067183]
+z_index = -5
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_7nau1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1362011579]
+shape = SubResource("RectangleShape2D_rgj8m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=794854668]
+scale = Vector2(1, 0.75)
+texture = ExtResource("1_y4xja")
