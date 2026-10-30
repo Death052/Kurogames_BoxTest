@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnkamynx16s2s"]
 
 [ext_resource type="Script" uid="uid://bb5qmbvfaiqbr" path="res://Entities/Box Pair/Box/Box.gd" id="1_4nqb4"]
-[ext_resource type="Texture2D" uid="uid://coc4ni3s7f16" path="res://Sprites/Entities/box_red.png" id="2_rres1"]
+[ext_resource type="Texture2D" uid="uid://10db0stga44e" path="res://Sprites/Entities/box_normal.png" id="2_rres1"]
 
 [sub_resource type="Animation" id="Animation_rres1"]
 resource_name = "Idle"

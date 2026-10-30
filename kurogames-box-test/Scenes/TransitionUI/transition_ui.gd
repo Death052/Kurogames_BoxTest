@@ -7,9 +7,7 @@ var transition_tween: Tween
 func _ready() -> void:
 	get_viewport().size_changed.connect(_resize_transition_overlay)
 	_resize_transition_overlay()
-	# when starting a level, do a transition out
-	set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
-	slide_out(0.5)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -23,6 +21,8 @@ func set_transition_color(color: Color) -> void:
 
 func slide_in(duration: float = 0.5) -> void:
 	animate_transition(0.0, duration)
+	if transition_tween != null:
+		await transition_tween.finished
 
 
 func slide_out(duration: float = 0.5) -> void:
@@ -32,6 +32,8 @@ func slide_out(duration: float = 0.5) -> void:
 	transition_overlay.position.x = 0.0
 	transition_overlay.visible = true
 	animate_transition(get_viewport().get_visible_rect().size.x, duration)
+	if transition_tween != null:
+		await transition_tween.finished
 
 
 func animate_transition(target_x: float, duration: float) -> void:
