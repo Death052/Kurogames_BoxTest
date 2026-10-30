@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://cg18x04iwvfpw"]
+
+[ext_resource type="Script" uid="uid://x3bnbio8uv8m" path="res://Scenes/Level Selection/level_selection_ui.gd" id="1_tgqro"]
+[ext_resource type="Script" uid="uid://bfjuh158nbd1p" path="res://Scenes/Level Selection/LevelButtonPress.gd" id="2_pgj7p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_background"]
+bg_color = Color(0.04, 0.06, 0.1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button"]
+content_margin_left = 28.0
+content_margin_top = 12.0
+content_margin_right = 28.0
+content_margin_bottom = 12.0
+bg_color = Color(0.12, 0.18, 0.28, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_button_hover"]
+content_margin_left = 28.0
+content_margin_top = 12.0
+content_margin_right = 28.0
+content_margin_bottom = 12.0
+bg_color = Color(0.2, 0.35, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelSelectionScreen" type="Control" unique_id=128417322]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tgqro")
+metadata/hide_game_ui = true
+
+[node name="Background" type="Panel" parent="." unique_id=793413068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_background")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1662396827]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="VBoxContainer" parent="CenterContainer" unique_id=1889247692]
+custom_minimum_size = Vector2(520, 0)
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="CenterContainer/Content" unique_id=1275139859]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Select Level"
+horizontal_alignment = 1
+
+[node name="ButtonRow" type="HBoxContainer" parent="CenterContainer/Content" unique_id=2130001907]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Level1Button" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=381447129]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Level 1"
+script = ExtResource("2_pgj7p")
+scene_path = "res://Scenes/game_scene_test.tscn"
+
+[node name="Level2Button" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=1044984556]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Level 2"
+script = ExtResource("2_pgj7p")
+
+[node name="Level3Button" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=1200214334]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Level 3"
+script = ExtResource("2_pgj7p")
+
+[node name="BackButtonMargin" type="MarginContainer" parent="CenterContainer/Content" unique_id=1473107464]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_override_constants/margin_top = 36
+
+[node name="Back Button" type="Button" parent="CenterContainer/Content/BackButtonMargin" unique_id=506276182]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Return"

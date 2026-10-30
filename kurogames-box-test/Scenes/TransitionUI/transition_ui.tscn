@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cp5nl2mdhauyc"]
+
+[ext_resource type="Script" uid="uid://dbn33xacexfqr" path="res://Scenes/TransitionUI/transition_ui.gd" id="1_fbsf4"]
+[ext_resource type="Texture2D" uid="uid://cck0b6qy002d8" path="res://Scenes/transition_texture.svg" id="2_xhmb6"]
+
+[node name="TransitionUi" type="CanvasLayer" unique_id=247495483]
+script = ExtResource("1_fbsf4")
+
+[node name="TransitionOverlay" type="TextureRect" parent="." unique_id=987148584]
+visible = false
+modulate = Color(0.04, 0.06, 0.1, 1)
+z_index = 100
+mouse_filter = 2
+texture = ExtResource("2_xhmb6")
+expand_mode = 1

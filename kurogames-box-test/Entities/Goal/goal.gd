@@ -17,7 +17,7 @@ func _ready() -> void:
 	# at start of scene, get the goal box pairs in scene
 	goal_box_pairs_in_scene = get_goal_box_pairs()
 	connect_goal_box_pair_signals()
-	update_box_count_ui()
+	GameUi.update_box_count_ui(goal_box_pairs_in_scene)
 
 
 # get all goal box pairs in the scene 
@@ -49,7 +49,7 @@ func validate_box_pairs() -> void:
 	for pair in goal_box_pairs_in_scene:
 		if pair.box_pair_is_reached == true:
 			validate_count += 1
-	update_box_count_ui()
+	GameUi.update_box_count_ui(goal_box_pairs_in_scene)
 	# if the count is the same, activate goal
 	if validate_count == goal_box_pairs_in_scene.size():
 		set_activate()
@@ -58,14 +58,7 @@ func validate_box_pairs() -> void:
 		set_deactivate()
 
 
-func update_box_count_ui() -> void:
-	var ui = get_tree().current_scene.get_node_or_null("UI")
-	if ui != null:
-		var boxes_left := 0
-		for pair in goal_box_pairs_in_scene:
-			if not pair.box_pair_is_reached:
-				boxes_left += 1
-		ui.update_box_counts(goal_box_pairs_in_scene.size(), boxes_left)
+
 		
 		
 
