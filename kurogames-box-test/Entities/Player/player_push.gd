@@ -17,6 +17,14 @@ func enter() -> void:
 	ShaderManager.set_outline(actor.player_sprite, Color(1.0, 0.4, 0.331, 1.0))
 	ShaderManager.set_outline(pushed_object.sprite,Color(1.0, 0.4, 0.331, 1.0))
 	
+	# listen to input
+	actor.interactionPressed.connect(_leave_pushing)
+	
+
+func exit() -> void:
+	if actor.interactionPressed.is_connected(_leave_pushing):
+		actor.interactionPressed.disconnect(_leave_pushing)
+
 
 func physics_update(_delta: float) -> void:
 	var push_direction : Vector2 = -saved_collision.get_normal()
@@ -26,10 +34,8 @@ func physics_update(_delta: float) -> void:
 		actor.movementSpeed,
 		actor.player_mass
 	)
-	
 	# lock player movement to only the specific axis
 	# Start moving the player and the object only if the player is moving
-	print("actor.input.dot(push_direction) = ", actor.input.dot(push_direction))
 	if actor.input.dot(push_direction) > 0.1:
 		pushed_object.push(push_direction, push_speed)
 		actor.push_speed = push_speed
@@ -38,6 +44,16 @@ func physics_update(_delta: float) -> void:
 	else:
 		pushed_object.stop_pushing()
 	return
+
+func _leave_pushing():
+	if actor.in_push_state == true:
+		# reset pushing variables before leaving push state
+		actor.end_pushing()
+		actor.movement_axis_constraint = Vector2.ZERO
+		state_machine.transition_to("IdleState")
+		# remove shader
+		ShaderManager.remove_shader(actor.player_sprite)
+		ShaderManager.remove_shader(pushed_object.sprite)
 
 
 func determine_push() -> void:

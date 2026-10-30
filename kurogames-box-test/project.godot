@@ -21,6 +21,7 @@ ShaderManager="*uid://dklkaywxyyb61"
 [file_customization]
 
 folder_colors={
+"res://Animation/": "orange",
 "res://Entities/": "red",
 "res://Scenes/": "yellow",
 "res://Shaders/": "purple",

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BoxPair" format=3 uid="uid://cpyrlhylnvmfl"]
+
+[ext_resource type="Texture2D" uid="uid://u5ofdrpx1dkx" path="res://Sprites/Entities/box_yellow.png" id="1_ir7um"]
+[ext_resource type="Texture2D" uid="uid://c4ts5d2xip30g" path="res://Sprites/Entities/box_goal_yellow.png" id="2_qbkga"]
+[ext_resource type="Script" uid="uid://clgc7n6ay7ded" path="res://Entities/Box Pair/box_pair_res.gd" id="3_vs6rt"]
+
+[resource]
+script = ExtResource("3_vs6rt")
+box_texture = ExtResource("1_ir7um")
+pressure_plate_texture = ExtResource("2_qbkga")
+metadata/_custom_type_script = "uid://clgc7n6ay7ded"

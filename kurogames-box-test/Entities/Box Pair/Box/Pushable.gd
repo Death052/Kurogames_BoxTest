@@ -26,6 +26,13 @@ func _ready() -> void:
 		if child is Sprite2D:
 			sprite = child
 
+func _physics_process(_delta: float) -> void:
+	if player == null:
+		return
+	# alter the ordering layer of the pushable object based on player y world axis
+	z_index = 1 if player.global_position.y < global_position.y else -1
+
+
 # Obtain the push speed of the player. The player push speed is affected by the object's mass
 func get_push_speed(player_speed: float, player_mass: float) -> float:
 	return player_speed / (1.0 + push_mass / player_mass)

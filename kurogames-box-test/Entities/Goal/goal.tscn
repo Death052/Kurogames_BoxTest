@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bdqk3qfih01e3"]
 
+[ext_resource type="Script" uid="uid://dgfohdl6vqkf6" path="res://Entities/Goal/goal.gd" id="1_nvhvj"]
 [ext_resource type="Texture2D" uid="uid://ci8c5cse7ec6u" path="res://Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="1_r8bwl"]
 
 [sub_resource type="Animation" id="Animation_2fmhe"]
@@ -60,12 +61,12 @@ _data = {
 size = Vector2(40, 31)
 
 [node name="Goal" type="Node2D" unique_id=2100462803]
+script = ExtResource("1_nvhvj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1641352491]
 texture = ExtResource("1_r8bwl")
 hframes = 3
 vframes = 2
-frame = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1443586967]
 libraries/ = SubResource("AnimationLibrary_2fmhe")

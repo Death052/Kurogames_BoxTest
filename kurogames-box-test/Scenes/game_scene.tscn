@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://d0xp4wiyn062n" path="res://Entities/Box Pair/box_pair.tscn" id="1_1ixah"]
 [ext_resource type="PackedScene" uid="uid://dmvtaqgbv45cx" path="res://Entities/Player/Player.tscn" id="1_x87qo"]
+[ext_resource type="Resource" uid="uid://t4rjqly2la5w" path="res://Entities/Box Pair/Resources/blue_box_pair.tres" id="2_2fmhe"]
+[ext_resource type="Resource" uid="uid://cpyrlhylnvmfl" path="res://Entities/Box Pair/Resources/yellow_box_pair.tres" id="3_7iton"]
 [ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="3_fiftr"]
 [ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="4_fiftr"]
 [ext_resource type="PackedScene" uid="uid://bdqk3qfih01e3" path="res://Entities/Goal/goal.tscn" id="5_1ixah"]
@@ -9,9 +11,11 @@
 [node name="GameScene" type="Node2D" unique_id=472067679]
 
 [node name="BoxPair" parent="." unique_id=784864484 instance=ExtResource("1_1ixah")]
+box_pair_resource = ExtResource("2_2fmhe")
 
 [node name="BoxPair2" parent="." unique_id=138043604 instance=ExtResource("1_1ixah")]
 position = Vector2(72, 43)
+box_pair_resource = ExtResource("3_7iton")
 
 [node name="CharacterBody2D" parent="." unique_id=120814942 instance=ExtResource("1_x87qo")]
 position = Vector2(26, -2)

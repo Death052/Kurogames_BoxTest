@@ -24,7 +24,9 @@ var input : Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	# Get Sprite and Animation Player
+	player_sprite = get_node("Sprite2D")
+	animation_player = get_node("AnimationPlayer")
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Check if the event is the action you want
@@ -32,10 +34,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		# other scripts can subscribe to this event
 		print("NJOAOC")
 		interactionPressed.emit()
-	# Get Sprite and Animation Player
-	player_sprite = get_node("Sprite2D")
-	animation_player = get_node("AnimationPlayer")
-
+	
 # called when the pushable object is detected
 func begin_pushing(object: Pushable) -> void:
 	pushed_object = object
@@ -90,14 +89,22 @@ func update_animations():
 			if player_sprite != null:
 				# Flip sprite if moving left, face right by default
 				player_sprite.flip_h = input.x > 0
+			animation_player.play("Walk Side")
 		else:
 			if input.y < 0:
 				last_facing_direction = "Up"
+				animation_player.play("Walk Up")
 			else:
 				last_facing_direction = "Down"
+				animation_player.play("Walk Down")
 		# Play corresponding Walk animation
-		animation_player.play("Walk " + last_facing_direction)
 	else:
 		# Play corresponding Idle animation based on last faced direction
-		animation_player.play("Idle " + last_facing_direction)
+		if last_facing_direction == "Side":
+			animation_player.play("Idle Side")
+		elif last_facing_direction == "Up":
+			animation_player.play("Idle Up")
+		else:
+			animation_player.play("Idle Down")
+	
 	
