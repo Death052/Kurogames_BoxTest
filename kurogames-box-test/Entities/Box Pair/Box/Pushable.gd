@@ -10,6 +10,7 @@ const ENTITY_Z_OFFSET := 100
 var player: Player
 # reference the sprite of the pushable object
 var sprite : Sprite2D
+@onready var box_blocker_area: Area2D = get_node_or_null("BoxCol")
 
 func _ready() -> void:
 	# set up rigidbody collision properties
@@ -37,6 +38,7 @@ func _physics_process(_delta: float) -> void:
 
 func _update_z_index() -> void:
 	z_index = ENTITY_Z_OFFSET + int(global_position.y)/10
+	print("z_index = ", z_index)
 
 
 # Obtain the push speed of the player. The player push speed is affected by the object's mass
@@ -44,7 +46,21 @@ func get_push_speed(player_speed: float, player_mass: float) -> float:
 	return player_speed / (1.0 + push_mass / player_mass)
 # Box movement when being pushed
 func push(push_direction: Vector2, speed: float) -> void:
+	if _is_blocked_by_box():
+		stop_pushing()
+		return
 	linear_velocity = push_direction * speed
+
+
+func _is_blocked_by_box() -> bool:
+	if box_blocker_area == null:
+		return false
+
+	for body in box_blocker_area.get_overlapping_bodies():
+		if body != self and body is Pushable:
+			return true
+
+	return false
 # Stop movement when the player stops pushing it
 func stop_pushing() -> void:
 	linear_velocity = Vector2.ZERO

@@ -12,6 +12,9 @@ class_name GoalBoxPair
 		goal_position = value
 		_update_child_positions()
 
+var box_ani : AnimationPlayer
+var box_pres_ani : AnimationPlayer
+
 # signals to indicate state of boxes
 signal box_reached
 signal box_left
@@ -26,7 +29,11 @@ func _ready() -> void:
 	# set box texture  based on resource
 	if box_pair_resource == null:
 		return
-
+	
+	# get the box animations
+	box_ani = self.get_node("Box/AnimationPlayer")
+	box_pres_ani = self.get_node("BoxGoal/AnimationPlayer")
+	
 	var box_texture : Texture2D = box_pair_resource.box_texture
 	var box_sprite : Sprite2D = self.get_node("Box/Sprite2D")
 	box_sprite.texture = box_texture
@@ -45,11 +52,15 @@ func _update_child_positions() -> void:
 	
 # called when the box is at the box goal
 func box_in_place():
+	box_ani.play("Placed")
+	box_pres_ani.play("Pressed")
 	box_pair_is_reached = true
 	box_reached.emit()
 
 # called when the box left the box goal
 func box_not_in_place():
+	box_ani.play("Idle")
+	box_pres_ani.play("Idle")
 	box_pair_is_reached = false
 	box_left.emit()
 

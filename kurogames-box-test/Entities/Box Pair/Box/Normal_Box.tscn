@@ -58,11 +58,11 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6h5vk"]
 size = Vector2(16, 4)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4nqb4"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1e3"]
 size = Vector2(18, 9.5)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mv1e3"]
-size = Vector2(16, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vqyo"]
+size = Vector2(18, 9.5)
 
 [node name="Normal_Box" type="RigidBody2D" unique_id=723686871 groups=["Box"]]
 z_index = 100
@@ -87,21 +87,22 @@ libraries/ = SubResource("AnimationLibrary_sk41n")
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_6h5vk")
 
-[node name="CheckPlayer" type="Area2D" parent="." unique_id=1660682259]
-collision_layer = 4
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPlayer" unique_id=1240177339]
-position = Vector2(0, 3.75)
-shape = SubResource("RectangleShape2D_4nqb4")
-
-[node name="BoxCol" type="Area2D" parent="." unique_id=1765683254]
+[node name="BoxCol" type="Area2D" parent="." unique_id=1904734562]
+position = Vector2(0, -5)
 collision_layer = 4
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxCol" unique_id=1704238160]
-position = Vector2(0, -7.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxCol" unique_id=1920889867]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_mv1e3")
+
+[node name="CheckPlayer" type="Area2D" parent="." unique_id=470418209]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPlayer" unique_id=1943968435]
+position = Vector2(0, 3.75)
+shape = SubResource("RectangleShape2D_5vqyo")
 
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bdqk3qfih01e3"]
 
 [ext_resource type="Script" uid="uid://dgfohdl6vqkf6" path="res://Entities/Goal/goal.gd" id="1_nvhvj"]
-[ext_resource type="Texture2D" uid="uid://ci8c5cse7ec6u" path="res://Sprout Lands - Sprites - Basic pack/Characters/Free Cow Sprites.png" id="1_r8bwl"]
+[ext_resource type="Texture2D" uid="uid://c163xm7yxbm24" path="res://Sprites/Entities/goal.png" id="2_nvhvj"]
 
 [sub_resource type="Animation" id="Animation_2fmhe"]
 resource_name = "Goal Activated"
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [2]
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_1ixah"]
@@ -32,7 +32,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_rgj8m"]
@@ -58,15 +58,14 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1ixah"]
-size = Vector2(40, 31)
+size = Vector2(12, 12)
 
 [node name="Goal" type="Node2D" unique_id=2100462803]
 script = ExtResource("1_nvhvj")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1641352491]
-texture = ExtResource("1_r8bwl")
-hframes = 3
-vframes = 2
+texture = ExtResource("2_nvhvj")
+hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1443586967]
 libraries/ = SubResource("AnimationLibrary_2fmhe")
@@ -76,5 +75,4 @@ collision_layer = 16
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=339131977]
-position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_1ixah")

@@ -58,10 +58,6 @@ func validate_box_pairs() -> void:
 		set_deactivate()
 
 
-
-		
-		
-
 func set_activate() -> void:
 	is_activated = true
 	animation_player.play("Goal Activated")
