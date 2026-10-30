@@ -1,6 +1,8 @@
 class_name Pushable
 extends RigidBody2D
 
+const ENTITY_Z_OFFSET := 100
+
 @export var push_force : float = 200
 @export var push_mass : float = 1.0
 
@@ -25,12 +27,16 @@ func _ready() -> void:
 	for child in get_children():
 		if child is Sprite2D:
 			sprite = child
+	_update_z_index()
 
 func _physics_process(_delta: float) -> void:
 	if player == null:
 		return
-	# alter the ordering layer of the pushable object based on player y world axis
-	z_index = 1 if player.global_position.y < global_position.y else -1
+	_update_z_index()
+
+
+func _update_z_index() -> void:
+	z_index = ENTITY_Z_OFFSET + int(global_position.y)/10
 
 
 # Obtain the push speed of the player. The player push speed is affected by the object's mass

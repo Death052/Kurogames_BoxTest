@@ -12,6 +12,12 @@ func enter() -> void:
 		if collider is Pushable:
 			pushed_object = collider
 			saved_collision = collision
+
+	if pushed_object == null:
+		return
+
+	set_box_masses(pushed_object)
+		
 	
 	# set outline shaders to indicate pushing relation
 	ShaderManager.set_outline(actor.player_sprite, Color(1.0, 0.4, 0.331, 1.0))
@@ -24,6 +30,7 @@ func enter() -> void:
 func exit() -> void:
 	if actor.interactionPressed.is_connected(_leave_pushing):
 		actor.interactionPressed.disconnect(_leave_pushing)
+	restore_box_masses()
 
 
 func physics_update(_delta: float) -> void:
@@ -54,6 +61,20 @@ func _leave_pushing():
 		# remove shader
 		ShaderManager.remove_shader(actor.player_sprite)
 		ShaderManager.remove_shader(pushed_object.sprite)
+
+
+# make every other box have huge mass so that the player can only push
+# one box at a time
+func set_box_masses(current_pushable: Pushable) -> void:
+	for pushable in get_tree().get_nodes_in_group("Box"):
+		if pushable is Pushable and pushable != current_pushable:
+			pushable.mass = 1000.0
+
+# upon releasing, revert boxes back to its original mass
+func restore_box_masses() -> void:
+	for pushable in get_tree().get_nodes_in_group("Box"):
+		if pushable is Pushable:
+			pushable.mass = pushable.push_mass
 
 
 func determine_push() -> void:

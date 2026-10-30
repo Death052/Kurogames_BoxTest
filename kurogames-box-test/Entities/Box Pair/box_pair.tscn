@@ -9,7 +9,7 @@ script = ExtResource("1_ia33w")
 
 [node name="Box" parent="." unique_id=723686871 node_paths=PackedStringArray("box_goal") instance=ExtResource("1_xubjk")]
 position = Vector2(26, -27)
-collision_mask = 42
+collision_mask = 46
 gravity_scale = 0.0
 lock_rotation = true
 freeze_mode = 1

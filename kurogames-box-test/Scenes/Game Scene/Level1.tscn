@@ -8,17 +8,20 @@
 [ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="6_0f6ny"]
 [ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="7_45ruw"]
 [ext_resource type="PackedScene" uid="uid://bdqk3qfih01e3" path="res://Entities/Goal/goal.tscn" id="8_lr8ek"]
-[ext_resource type="PackedScene" uid="uid://dnkamynx16s2s" path="res://Entities/Box Pair/Box/Box.tscn" id="9_nwwa6"]
+[ext_resource type="PackedScene" uid="uid://ckdm6hc8qvi2i" path="res://Entities/Box Pair/Box/Normal_Box.tscn" id="9_nwwa6"]
 
 [node name="TestGameScene" type="Node2D" unique_id=472067679]
 script = ExtResource("1_klj2t")
 
 [node name="BoxPair" parent="." unique_id=784864484 instance=ExtResource("2_nwwa6")]
 box_pair_resource = ExtResource("3_qsl0q")
+box_position = Vector2(64.245, -27)
+goal_position = Vector2(160, 93)
 
 [node name="BoxPair2" parent="." unique_id=138043604 instance=ExtResource("2_nwwa6")]
-position = Vector2(72, 43)
 box_pair_resource = ExtResource("4_v3cut")
+box_position = Vector2(8, -29.015)
+goal_position = Vector2(8, -110)
 
 [node name="CharacterBody2D" parent="." unique_id=120814942 instance=ExtResource("5_gqflc")]
 position = Vector2(26, -2)
@@ -28,6 +31,7 @@ movementSpeed = 100.0
 
 [node name="Fence" type="TileMapLayer" parent="Tilemap" unique_id=550616671]
 z_index = -5
+tile_map_data = PackedByteArray("AAD8//j/AQABAAAAAAD8//n/AQAAAAEAAAD8//r/AQAAAAEAAAD8//v/AQAAAAEAAAD8//z/AQAAAAEAAAD8//3/AQAAAAEAAAD8//7/AQAAAAEAAAD8////AQAAAAEAAAD8/wAAAQAAAAEAAAD8/wEAAQAAAAEAAAD8/wIAAQAAAAEAAAD8/wMAAQABAAIAAAD9/wMAAQACAAMAAAD+/wMAAQACAAMAAAD//wMAAQACAAMAAAAAAAMAAQACAAMAAAABAAMAAQACAAMAAAACAAMAAQACAAMAAAADAAMAAQACAAMAAAAEAAMAAQACAAMAAAAFAAMAAQACAAMAAAAGAAMAAQACAAMAAAAHAAMAAQADAAIAAAAHAAIAAQAAAAEAAAAHAAEAAQAAAAEAAAAHAAAAAQAAAAEAAAAHAP//AQAAAAEAAAAHAP7/AQAAAAEAAAAHAP3/AQAAAAEAAAAHAPz/AQAAAAEAAAAHAPv/AQAAAAEAAAAHAPr/AQAAAAEAAAAHAPn/AQAAAAEAAAAHAPj/AQADAAAAAAAGAPj/AQACAAMAAAAFAPj/AQACAAMAAAAEAPj/AQACAAMAAAADAPj/AQACAAMAAAACAPj/AQACAAMAAAABAPj/AQACAAAAAAD///j/AQACAAAAAAD+//j/AQACAAMAAAD9//j/AQACAAMAAAAAAPj/AQACAAMAAAD///n/AQAAAAIAAAABAPn/AQAAAAIAAAABAPv/AQAAAAEAAAD///v/AQAAAAEAAAD///z/AQAAAAEAAAABAPz/AQAAAAEAAAD///3/AQAAAAEAAAABAP3/AQAAAAEAAAD///7/AQAAAAIAAAABAP7/AQAAAAIAAAA=")
 tile_set = ExtResource("6_0f6ny")
 
 [node name="Ground" type="TileMapLayer" parent="Tilemap" unique_id=1319352940]
@@ -47,5 +51,12 @@ tile_set = ExtResource("6_0f6ny")
 
 [node name="Goal" parent="." unique_id=2100462803 instance=ExtResource("8_lr8ek")]
 
-[node name="Box" parent="." unique_id=723686871 instance=ExtResource("9_nwwa6")]
-position = Vector2(-17, -47)
+[node name="Normal_Box" parent="." unique_id=723686871 instance=ExtResource("9_nwwa6")]
+z_index = 91
+position = Vector2(8, -90)
+collision_mask = 10
+mass = 5.0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 4
+box_position = Vector2(8, -90)

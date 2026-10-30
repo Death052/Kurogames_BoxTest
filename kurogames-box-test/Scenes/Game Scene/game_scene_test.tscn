@@ -8,12 +8,14 @@
 [ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="6_ij4x7"]
 [ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="7_ahp85"]
 [ext_resource type="PackedScene" uid="uid://bdqk3qfih01e3" path="res://Entities/Goal/goal.tscn" id="8_t8np3"]
+[ext_resource type="PackedScene" uid="uid://ckdm6hc8qvi2i" path="res://Entities/Box Pair/Box/Normal_Box.tscn" id="9_vsr6c"]
 
 [node name="TestGameScene" type="Node2D" unique_id=472067679]
 script = ExtResource("1_lv60g")
 
 [node name="BoxPair" parent="." unique_id=784864484 instance=ExtResource("2_vsr6c")]
 box_pair_resource = ExtResource("3_bpx2p")
+box_position = Vector2(26, -19.655)
 
 [node name="BoxPair2" parent="." unique_id=138043604 instance=ExtResource("2_vsr6c")]
 position = Vector2(72, 43)
@@ -41,3 +43,10 @@ tile_map_data = PackedByteArray("AAD4//b/AAAAAAAAAAD4//f/AAAAAAAAAAD4//j/AAAAAAA
 tile_set = ExtResource("6_ij4x7")
 
 [node name="Goal" parent="." unique_id=2100462803 instance=ExtResource("8_t8np3")]
+
+[node name="Normal_Box" parent="." unique_id=723686871 instance=ExtResource("9_vsr6c")]
+z_index = 100
+mass = 5.0
+gravity_scale = 0.0
+contact_monitor = true
+max_contacts_reported = 4

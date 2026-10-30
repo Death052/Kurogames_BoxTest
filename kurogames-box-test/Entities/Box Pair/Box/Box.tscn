@@ -61,10 +61,12 @@ size = Vector2(16, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4nqb4"]
 size = Vector2(18, 9.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rres1"]
+size = Vector2(16, 1)
+
 [node name="Box" type="RigidBody2D" unique_id=723686871 groups=["Box"]]
-z_index = 2
 collision_layer = 4
-collision_mask = 10
+collision_mask = 14
 gravity_scale = -8.0
 script = ExtResource("1_4nqb4")
 push_mass = 5.0
@@ -87,6 +89,14 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckPlayer" unique_id=1240177339]
 position = Vector2(0, 3.75)
 shape = SubResource("RectangleShape2D_4nqb4")
+
+[node name="BoxCol" type="Area2D" parent="." unique_id=864879360]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoxCol" unique_id=1855719877]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_rres1")
 
 [connection signal="body_entered" from="CheckPlayer" to="." method="_on_check_player_body_entered"]
 [connection signal="body_exited" from="CheckPlayer" to="." method="_on_check_player_body_exited"]

@@ -1,7 +1,16 @@
+@tool
 extends Node
 class_name GoalBoxPair
 
 @export var box_pair_resource : BoxPair
+@export var box_position := Vector2(26, -27):
+	set(value):
+		box_position = value
+		_update_child_positions()
+@export var goal_position := Vector2(25, -73):
+	set(value):
+		goal_position = value
+		_update_child_positions()
 
 # signals to indicate state of boxes
 signal box_reached
@@ -12,7 +21,12 @@ var box_pair_is_reached : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	_update_child_positions()
+
 	# set box texture  based on resource
+	if box_pair_resource == null:
+		return
+
 	var box_texture : Texture2D = box_pair_resource.box_texture
 	var box_sprite : Sprite2D = self.get_node("Box/Sprite2D")
 	box_sprite.texture = box_texture
@@ -21,6 +35,13 @@ func _ready() -> void:
 	var pressure_plate_texture : Texture2D = box_pair_resource.pressure_plate_texture
 	var pressure_plate_sprite : Sprite2D = self.get_node("BoxGoal/Sprite2D")
 	pressure_plate_sprite.texture = pressure_plate_texture
+
+
+func _update_child_positions() -> void:
+	if has_node("Box"):
+		$Box.position = box_position
+	if has_node("BoxGoal"):
+		$BoxGoal.position = goal_position
 	
 # called when the box is at the box goal
 func box_in_place():
