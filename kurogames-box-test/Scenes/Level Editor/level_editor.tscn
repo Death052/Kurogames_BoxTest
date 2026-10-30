@@ -1,0 +1,293 @@
+[gd_scene format=3 uid="uid://d38ugafnv3x1w"]
+
+[ext_resource type="Script" uid="uid://dtloehy26mnut" path="res://Scenes/Level Editor/level_editor.gd" id="1_editor"]
+[ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="2_colliding"]
+[ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="3_not_colliding"]
+[ext_resource type="Texture2D" uid="uid://xeld0mrjlpxe" path="res://Sprites/Editor/TilePlacceRef.png" id="4_0wrth"]
+[ext_resource type="Texture2D" uid="uid://rl6l28orm1q5" path="res://Sprites/Entities/box_goal_red_1.png" id="5_xlnsc"]
+[ext_resource type="Texture2D" uid="uid://dl4bdt112f47d" path="res://Sprites/Entities/box_red_1.png" id="5_yfyhu"]
+[ext_resource type="Texture2D" uid="uid://c358h6ru824ct" path="res://Sprites/Entities/box_goal_yellow_1.png" id="6_6bweo"]
+[ext_resource type="Texture2D" uid="uid://c31snrtar1dr3" path="res://Sprites/Entities/box_yellow_1.png" id="6_c2pho"]
+[ext_resource type="Texture2D" uid="uid://ynsd4d1o43mu" path="res://Sprites/Entities/box_blue_1.png" id="7_fntvi"]
+[ext_resource type="Texture2D" uid="uid://b3ueh31ovakhf" path="res://Sprites/Entities/box_goal_blue_1.png" id="7_sauus"]
+[ext_resource type="Texture2D" uid="uid://7daw4f74ywlq" path="res://Sprites/Entities/player_icon.png" id="11_sauus"]
+[ext_resource type="Texture2D" uid="uid://bhsc0k1efrtin" path="res://Sprites/Entities/goal_icon.png" id="12_yu5dg"]
+[ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="13_yu5dg"]
+[ext_resource type="Script" uid="uid://bnr5vro2ut27b" path="res://Scenes/Level Editor/save.gd" id="14_1op21"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1op21"]
+content_margin_left = 12.0
+content_margin_top = 8.0
+content_margin_right = 12.0
+content_margin_bottom = 8.0
+bg_color = Color(0.04, 0.06, 0.1, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lepmc"]
+bg_color = Color(0.28194702, 0.3177633, 0.4809339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv6ap"]
+bg_color = Color(0.28235295, 0.31764707, 0.48235294, 1)
+
+[node name="LevelEditor" type="Node2D" unique_id=2147455474 node_paths=PackedStringArray("save_node")]
+script = ExtResource("1_editor")
+default_preview_sprite = ExtResource("4_0wrth")
+red_box_texture = ExtResource("5_yfyhu")
+yellow_box_texture = ExtResource("6_c2pho")
+blue_box_texture = ExtResource("7_fntvi")
+red_box_goal_texture = ExtResource("5_xlnsc")
+yellow_box_goal_texture = ExtResource("6_6bweo")
+blue_box_goal_texture = ExtResource("7_sauus")
+normal_box_texture = ExtResource("13_yu5dg")
+player_texture = ExtResource("11_sauus")
+goal_texture = ExtResource("12_yu5dg")
+save_node = NodePath("SaveLevel")
+metadata/hide_game_ui = true
+
+[node name="EditorCanvas" type="Node2D" parent="." unique_id=1086021945]
+
+[node name="NotCollidingTiles" type="TileMapLayer" parent="EditorCanvas" unique_id=480689601]
+z_index = -20
+tile_set = ExtResource("3_not_colliding")
+
+[node name="CollidingTiles" type="TileMapLayer" parent="EditorCanvas" unique_id=1113108844]
+z_index = -10
+tile_set = ExtResource("2_colliding")
+
+[node name="Objects" type="Node2D" parent="EditorCanvas" unique_id=1175539135]
+
+[node name="RedBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1991260664]
+offset = Vector2(8, 8)
+
+[node name="RedGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1408040563]
+offset = Vector2(8, 8)
+
+[node name="BlueBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=2053683092]
+offset = Vector2(8, 8)
+
+[node name="BlueGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=307711678]
+offset = Vector2(8, 8)
+
+[node name="YellowBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=2100778391]
+offset = Vector2(8, 8)
+
+[node name="YellowGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1432641866]
+offset = Vector2(8, 8)
+
+[node name="Player" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=868555281]
+offset = Vector2(8, 8)
+
+[node name="Goal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1608448996]
+offset = Vector2(8, 8)
+
+[node name="SpritePreviews" type="Node2D" parent="EditorCanvas" unique_id=123339175]
+
+[node name="TilePreview" type="Sprite2D" parent="EditorCanvas/SpritePreviews" unique_id=1291993640]
+modulate = Color(1, 1, 1, 0.27450982)
+z_index = 10
+texture = ExtResource("4_0wrth")
+offset = Vector2(8, 8)
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=846554770]
+
+[node name="SaveLoadMarginContainer" type="MarginContainer" parent="Interface" unique_id=921533553]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -342.19995
+offset_top = -84.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Interface/SaveLoadMarginContainer" unique_id=1362330163]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_1op21")
+
+[node name="MarginContainer" type="MarginContainer" parent="Interface/SaveLoadMarginContainer/PanelContainer" unique_id=1870666399]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer" unique_id=447409674]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Save" type="Button" parent="Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1778237541]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_lepmc")
+text = "Save"
+
+[node name="Play" type="Button" parent="Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=205384531]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_pv6ap")
+text = "Play
+"
+
+[node name="TopBar" type="PanelContainer" parent="Interface" unique_id=892561372]
+offset_right = 1152.0
+offset_bottom = 56.0
+
+[node name="ModeLabel" type="Label" parent="Interface/TopBar" unique_id=782445321]
+layout_mode = 2
+text = "Tool"
+vertical_alignment = 1
+
+[node name="PalettePanel" type="PanelContainer" parent="Interface" unique_id=809711709]
+offset_left = 8.0
+offset_top = 64.0
+offset_right = 280.0
+offset_bottom = 648.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Interface/PalettePanel" unique_id=739499007]
+visible = false
+layout_mode = 2
+
+[node name="Palette" type="VBoxContainer" parent="Interface/PalettePanel/ScrollContainer" unique_id=1782239465]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="BoxCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1878472362]
+layout_mode = 2
+
+[node name="HBoxBoxes" type="VBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer" unique_id=1469535057]
+layout_mode = 2
+
+[node name="HBoxRed" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=828496029]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxRed" unique_id=74440462]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+texture = ExtResource("5_yfyhu")
+expand_mode = 1
+
+[node name="RedBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxRed" unique_id=1180253399]
+custom_minimum_size = Vector2(170.395, 40)
+layout_mode = 2
+text = "Red Box"
+
+[node name="HBoxYellow" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=1028071004]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxYellow" unique_id=1580684229]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+texture = ExtResource("6_c2pho")
+expand_mode = 1
+
+[node name="YellowBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxYellow" unique_id=1012289828]
+custom_minimum_size = Vector2(170.395, 40)
+layout_mode = 2
+text = "Yellow Box"
+
+[node name="HBoxBlue" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=345898153]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxBlue" unique_id=661303930]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+texture = ExtResource("7_fntvi")
+expand_mode = 1
+
+[node name="BlueBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxBlue" unique_id=1491837840]
+custom_minimum_size = Vector2(170.395, 40)
+layout_mode = 2
+text = "Blue Box"
+
+[node name="HBoxNormal" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=2105626208]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxNormal" unique_id=424167219]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+texture = ExtResource("13_yu5dg")
+expand_mode = 1
+
+[node name="NormalBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxNormal" unique_id=337373933]
+custom_minimum_size = Vector2(170.395, 40)
+layout_mode = 2
+text = "Normal Box
+"
+
+[node name="PlayerGoalCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1473895333]
+visible = false
+layout_mode = 2
+
+[node name="HBoxBoxes" type="VBoxContainer" parent="Interface/PalettePanel/PlayerGoalCenterContainer" unique_id=1603908021]
+layout_mode = 2
+
+[node name="HBoxRed" type="HBoxContainer" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes" unique_id=607850967]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxRed" unique_id=736685885]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+texture = ExtResource("11_sauus")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="PlayerBtn" type="Button" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxRed" unique_id=316406422]
+custom_minimum_size = Vector2(170.395, 40)
+layout_mode = 2
+text = "Player"
+
+[node name="HBoxYellow" type="HBoxContainer" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes" unique_id=1023556474]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxYellow" unique_id=91632443]
+custom_minimum_size = Vector2(44, 0)
+layout_mode = 2
+texture = ExtResource("12_yu5dg")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="GoalBtn" type="Button" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxYellow" unique_id=1770436240]
+custom_minimum_size = Vector2(170.395, 40)
+layout_mode = 2
+text = "Goal
+"
+
+[node name="ObjectTools" type="VBoxContainer" parent="Interface" unique_id=540618384]
+offset_left = 296.0
+offset_top = 72.0
+offset_right = 400.0
+offset_bottom = 220.0
+theme_override_constants/separation = 8
+
+[node name="PlayerGoalButton" type="Button" parent="Interface/ObjectTools" unique_id=232398151]
+custom_minimum_size = Vector2(104, 40)
+layout_mode = 2
+text = "Player/Goal"
+
+[node name="BoxButton" type="Button" parent="Interface/ObjectTools" unique_id=980899782]
+custom_minimum_size = Vector2(104, 40)
+layout_mode = 2
+text = "Box"
+
+[node name="Tiles" type="Button" parent="Interface/ObjectTools" unique_id=1013166456]
+custom_minimum_size = Vector2(104, 40)
+layout_mode = 2
+toggle_mode = true
+text = "Tiles"
+
+[node name="SaveLevel" type="Node" parent="." unique_id=1135324774]
+script = ExtResource("14_1op21")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=680932147]
+zoom = Vector2(3, 3)

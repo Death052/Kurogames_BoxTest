@@ -104,6 +104,17 @@ text = "Level 3"
 script = ExtResource("2_pgj7p")
 level_num = 2
 
+[node name="Level Editor" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=309878367]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_button")
+theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Level 
+Editor"
+script = ExtResource("2_pgj7p")
+scene_path = "res://Scenes/Level Editor/level_editor.tscn"
+
 [node name="BackButtonMargin" type="MarginContainer" parent="CenterContainer/Content" unique_id=1473107464]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
