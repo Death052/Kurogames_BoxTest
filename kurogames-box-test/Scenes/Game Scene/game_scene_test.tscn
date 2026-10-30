@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ckdm6hc8qvi2i" path="res://Entities/Box Pair/Box/Normal_Box.tscn" id="9_vsr6c"]
 
 [node name="TestGameScene" type="Node2D" unique_id=472067679]
+y_sort_enabled = true
 script = ExtResource("1_lv60g")
 
 [node name="BoxPair" parent="." unique_id=784864484 instance=ExtResource("2_vsr6c")]

@@ -14,6 +14,12 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bw2rt"]
+bg_color = Color(0.28194702, 0.3177633, 0.4809339, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjnnq"]
+bg_color = Color(0.28235295, 0.31764707, 0.48235294, 1)
+
 [node name="UI" type="CanvasLayer" unique_id=1670190659]
 script = ExtResource("1_qdvrb")
 
@@ -79,3 +85,46 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "0"
 horizontal_alignment = 2
+
+[node name="ButtonMarginContainer" type="MarginContainer" parent="." unique_id=366799475]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+offset_right = 342.2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ButtonMarginContainer" unique_id=659837892]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ui")
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonMarginContainer/PanelContainer" unique_id=1822958924]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonMarginContainer/PanelContainer/MarginContainer" unique_id=400924840]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Back" type="Button" parent="ButtonMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1437944474]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_bw2rt")
+text = "Back"
+
+[node name="Retry" type="Button" parent="ButtonMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1009465979]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_xjnnq")
+text = "Retry
+"

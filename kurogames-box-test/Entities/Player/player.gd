@@ -27,7 +27,6 @@ func _ready() -> void:
 	# Get Sprite and Animation Player
 	player_sprite = get_node("Sprite2D")
 	animation_player = get_node("AnimationPlayer")
-	_update_z_index()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Check if the event is the action you want
@@ -77,12 +76,6 @@ func _physics_process(delta: float) -> void:
 	# use the calculated velocity to move the player
 	velocity = input * current_speed
 	move_and_slide()
-	_update_z_index()
-
-
-func _update_z_index() -> void:
-	print("global_position.y = ", z_index)
-	z_index = 100 + int(global_position.y)/10
 	
 	
 # update the animations of the player

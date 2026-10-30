@@ -76,3 +76,5 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=339131977]
 shape = SubResource("RectangleShape2D_1ixah")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

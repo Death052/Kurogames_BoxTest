@@ -91,6 +91,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Level 2"
 script = ExtResource("2_pgj7p")
+scene_path = "res://Scenes/Game Scene/Level2.tscn"
+level_num = 1
 
 [node name="Level3Button" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=1200214334]
 custom_minimum_size = Vector2(150, 150)
@@ -100,6 +102,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Level 3"
 script = ExtResource("2_pgj7p")
+level_num = 2
 
 [node name="BackButtonMargin" type="MarginContainer" parent="CenterContainer/Content" unique_id=1473107464]
 custom_minimum_size = Vector2(0, 32)

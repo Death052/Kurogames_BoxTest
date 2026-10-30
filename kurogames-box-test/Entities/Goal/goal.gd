@@ -6,7 +6,10 @@ var is_activated : bool
 # Goal Animation and sprite
 var animation_player : AnimationPlayer
 var sprite : Sprite2D
-
+# the player
+var player : Player
+# if the goal is from an existing level, give it a number
+@export var goal_level_num : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# get the animation player and sprite
@@ -18,6 +21,10 @@ func _ready() -> void:
 	goal_box_pairs_in_scene = get_goal_box_pairs()
 	connect_goal_box_pair_signals()
 	GameUi.update_box_count_ui(goal_box_pairs_in_scene)
+	# get the player in scene
+	player = get_tree().get_first_node_in_group("Player")
+	if player == null:
+		push_error("%s could not find a Player." % name)
 
 
 # get all goal box pairs in the scene 
@@ -57,7 +64,6 @@ func validate_box_pairs() -> void:
 	else:
 		set_deactivate()
 
-
 func set_activate() -> void:
 	is_activated = true
 	animation_player.play("Goal Activated")
@@ -68,6 +74,16 @@ func set_deactivate() -> void:
 	animation_player.play("Goal Deactivated")
 	ShaderManager.remove_shader(sprite)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	# if the player enters the goal, pass the level
+	if body == player:
+		if is_activated == true:
+			# mark the level as complete
+			GameManager.level_completion[goal_level_num] = true
+			# Go back to the level screen
+			TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
+			await TransitionUi.slide_in(0.5)
+			await get_tree().create_timer(0.3).timeout
+			get_tree().change_scene_to_file("res://Scenes/Level Selection/level_selection_screen.tscn")
+			

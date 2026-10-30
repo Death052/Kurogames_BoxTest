@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 ShaderManager="*uid://dklkaywxyyb61"
 GameUi="*uid://2t3bdy4q5h2j"
 TransitionUi="*uid://cp5nl2mdhauyc"
+GameManager="*uid://ybpy3qc730oj"
 
 [file_customization]
 

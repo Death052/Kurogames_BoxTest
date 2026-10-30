@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cpkeshjrahhls" path="res://Entities/Box Pair/Box Goal/box_goal.tscn" id="2_ia33w"]
 
 [node name="BoxPair" type="Node2D" unique_id=784864484]
+y_sort_enabled = true
 script = ExtResource("1_ia33w")
 
 [node name="Box" parent="." unique_id=723686871 node_paths=PackedStringArray("box_goal") instance=ExtResource("1_xubjk")]
