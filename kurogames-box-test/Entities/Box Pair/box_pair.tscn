@@ -22,3 +22,4 @@ position = Vector2(25, -73)
 box = NodePath("../Box")
 
 [connection signal="body_entered" from="BoxGoal" to="BoxGoal" method="_on_body_entered"]
+[connection signal="body_exited" from="BoxGoal" to="BoxGoal" method="_on_body_exited"]

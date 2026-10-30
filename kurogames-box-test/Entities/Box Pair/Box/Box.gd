@@ -24,16 +24,9 @@ func _on_check_player_body_entered(body: Node2D) -> void:
 	if body == player:
 		ShaderManager.set_outline(sprite, Color(0.375, 0.53, 0.903, 1.0))
 		can_pickup = true
-	# when it reaches its box goal, call the box in place function
-	if body == box_goal:
-		get_parent().box_in_place()
 
 
 func _on_check_player_body_exited(body: Node2D) -> void:
 	if body == player:
 		ShaderManager.remove_shader(sprite)
 		can_pickup = false
-		
-	# when it leaves its box goal, call the box in place function
-	if body == box_goal:
-		get_parent().box_not_in_place()

@@ -48,8 +48,6 @@ func validate_box_pairs() -> void:
 	for pair in goal_box_pairs_in_scene:
 		if pair.box_pair_is_reached == true:
 			validate_count += 1
-	print("validate_count = " , validate_count)
-	print("validate_count2 = " , goal_box_pairs_in_scene.size())
 	# if the count is the same, activate goal
 	if validate_count == goal_box_pairs_in_scene.size():
 		set_activate()
