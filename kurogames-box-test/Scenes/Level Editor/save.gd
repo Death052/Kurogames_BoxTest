@@ -43,6 +43,10 @@ func _save_objects(sprites_list : Node2D) -> Array[Dictionary]:
 	for child in sprites_list.get_children():
 		if not child is Sprite2D or not child.visible:
 			continue
+		# if there is nothing in the sprite, don't append it
+		if child.texture == null:
+			continue
+		# append to object_date if type is 0
 		var object_type := _get_object_type(child as Sprite2D)
 		if object_type.is_empty():
 			continue
@@ -52,6 +56,7 @@ func _save_objects(sprites_list : Node2D) -> Array[Dictionary]:
 			"x": child.position.x,
 			"y": child.position.y
 		})
+	print("saved_objects = ", saved_objects)
 	return saved_objects
 
 func _get_object_type(sprite: Sprite2D) -> String:
@@ -62,17 +67,17 @@ func _get_object_type(sprite: Sprite2D) -> String:
 			return "goal"
 		"RedBox":
 			return "red_box"
-		"RedGoal":
-			return "red_goal"
 		"YellowBox":
 			return "yellow_box"
-		"YellowGoal":
-			return "yellow_goal"
 		"BlueBox":
 			return "blue_box"
+		"RedGoal":
+			return "red_goal"
+		"YellowGoal":
+			return "yellow_goal"
 		"BlueGoal":
 			return "blue_goal"
 
 	# has to be normal box if none of the above exist
 	return "normal_box"
-	#return ""
+		

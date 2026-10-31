@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 # handles movement speed of the character
-@export var movementSpeed: float = 200.0
+@export var movementSpeed: float = 100.0
 @export var player_mass: float = 10.0
 var movement_axis_constraint: Vector2
 

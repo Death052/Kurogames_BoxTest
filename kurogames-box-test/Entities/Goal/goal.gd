@@ -1,4 +1,5 @@
 extends Node
+class_name Goal
 
 var goal_box_pairs_in_scene : Array[GoalBoxPair]
 # Goal State
@@ -79,8 +80,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	# if the player enters the goal, pass the level
 	if body == player:
 		if is_activated == true:
-			# mark the level as complete
-			GameManager.level_completion[goal_level_num] = true
+			# if goal is -1, it means its a custom level
+			if goal_level_num != -1:
+				# mark the level as complete
+				GameManager.level_completion[goal_level_num] = true
 			# Go back to the level screen
 			TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 			await TransitionUi.slide_in(0.5)

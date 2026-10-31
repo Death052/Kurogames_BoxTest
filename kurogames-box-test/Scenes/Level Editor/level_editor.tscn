@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsc0k1efrtin" path="res://Sprites/Entities/goal_icon.png" id="12_yu5dg"]
 [ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="13_yu5dg"]
 [ext_resource type="Script" uid="uid://bnr5vro2ut27b" path="res://Scenes/Level Editor/save.gd" id="14_1op21"]
+[ext_resource type="Script" uid="uid://dysj7yfme5fm7" path="res://Scenes/Level Editor/box_goal_placing.gd" id="15_lepmc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1op21"]
 content_margin_left = 12.0
@@ -59,6 +60,9 @@ tile_set = ExtResource("2_colliding")
 
 [node name="Objects" type="Node2D" parent="EditorCanvas" unique_id=1175539135]
 
+[node name="Player" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=868555281]
+offset = Vector2(8, 8)
+
 [node name="RedBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1991260664]
 offset = Vector2(8, 8)
 
@@ -75,9 +79,6 @@ offset = Vector2(8, 8)
 offset = Vector2(8, 8)
 
 [node name="YellowGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1432641866]
-offset = Vector2(8, 8)
-
-[node name="Player" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=868555281]
 offset = Vector2(8, 8)
 
 [node name="Goal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1608448996]
@@ -286,8 +287,28 @@ layout_mode = 2
 toggle_mode = true
 text = "Tiles"
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/ObjectTools" unique_id=1254608935]
+layout_mode = 2
+
+[node name="Draw" type="Button" parent="Interface/ObjectTools/HBoxContainer" unique_id=802960104]
+custom_minimum_size = Vector2(104, 40)
+layout_mode = 2
+toggle_mode = true
+text = "Draw
+"
+
+[node name="Erase2" type="Button" parent="Interface/ObjectTools/HBoxContainer" unique_id=1199581316]
+custom_minimum_size = Vector2(104, 40)
+layout_mode = 2
+toggle_mode = true
+text = "Erase
+"
+
 [node name="SaveLevel" type="Node" parent="." unique_id=1135324774]
 script = ExtResource("14_1op21")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=680932147]
 zoom = Vector2(3, 3)
+
+[node name="BoxPlacing" type="Node" parent="." unique_id=827132818]
+script = ExtResource("15_lepmc")

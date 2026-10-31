@@ -26,7 +26,6 @@ goal_position = Vector2(8, -110)
 
 [node name="CharacterBody2D" parent="." unique_id=120814942 instance=ExtResource("5_34647")]
 position = Vector2(26, -2)
-movementSpeed = 100.0
 
 [node name="Tilemap" type="Node" parent="." unique_id=1608148775]
 

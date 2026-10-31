@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://d2gfl0c3sdepb"]
+
+[ext_resource type="Script" uid="uid://bujioa5me85i2" path="res://Scenes/Custom Level/custom_level_loader.gd" id="1_loader"]
+[ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="2_colliding"]
+[ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="3_not_colliding"]
+
+[node name="CustomLevel" type="Node2D" unique_id=1848546265]
+script = ExtResource("1_loader")
+
+[node name="NotCollidingTiles" type="TileMapLayer" parent="." unique_id=1033447708]
+z_index = -20
+tile_set = ExtResource("3_not_colliding")
+
+[node name="CollidingTiles" type="TileMapLayer" parent="." unique_id=74314358]
+z_index = -10
+tile_set = ExtResource("2_colliding")
+
+[node name="Objects" type="Node2D" parent="." unique_id=2121506938]
