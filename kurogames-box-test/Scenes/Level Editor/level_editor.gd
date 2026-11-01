@@ -33,6 +33,7 @@ const NOT_COLLIDING_TILES := preload("res://Sprites/Tilesets/NotColliding.tres")
 var selected_layer: TileMapLayer
 var selected_source_id := 0
 var selected_atlas_coords := Vector2i.ZERO
+var last_painted_tile := Vector2i(2147483647, 2147483647)
 var selected_box_colour := ""
 var selected_goal_colour := ""
 var selected_others := ""
@@ -174,9 +175,17 @@ func _process(delta: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	# A left click places the currently selected tile. UI clicks are handled
 	# by the UI controls and do not reach this method.
+	if event is InputEventMouseMotion:
+		if event.button_mask & MOUSE_BUTTON_MASK_LEFT and selected_layer != null and not is_erasing:
+			_paint_tile_at_mouse()
+		return
+
 	if not event is InputEventMouseButton:
 		return
-	if not event.pressed or event.button_index != MOUSE_BUTTON_LEFT:
+	if event.button_index != MOUSE_BUTTON_LEFT:
+		return
+	if not event.pressed:
+		last_painted_tile = Vector2i(2147483647, 2147483647)
 		return
 	if is_erasing:
 		_erase_at()
@@ -196,8 +205,19 @@ func _unhandled_input(event: InputEvent) -> void:
 		others_editor._place_other_at(snapped_position)
 		return
 
-	var tile_position: Vector2i = selected_layer.local_to_map(snapped_position)
+	_paint_tile_at(snapped_position)
+
+func _paint_tile_at_mouse() -> void:
+	var canvas_position: Vector2 = $EditorCanvas.to_local(get_global_mouse_position())
+	var snapped_position: Vector2 = _snap_to_grid(canvas_position)
+	_paint_tile_at(snapped_position)
+
+func _paint_tile_at(position: Vector2) -> void:
+	var tile_position: Vector2i = selected_layer.local_to_map(position)
+	if tile_position == last_painted_tile:
+		return
 	selected_layer.set_cell(tile_position, selected_source_id, selected_atlas_coords)
+	last_painted_tile = tile_position
 
 
 func disable_all_buttons():

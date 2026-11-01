@@ -50,12 +50,13 @@ func load_level(path: String = LEVEL_PATH) -> void:
 		return
 
 	var level_version := int(parsed.get("version", 1))
+	var is_saved_level := path.get_base_dir().get_file() == "Saved_Levels"
 
 	_load_tile_layer(parsed.get("tiles", {}).get("colliding", []), colliding_layer)
 	_load_tile_layer(parsed.get("tiles", {}).get("not_colliding", []), not_colliding_layer)
 	var saved_objects: Array = parsed.get("objects", [])
 	var saved_box_goals: Array = parsed.get("box_goals", saved_objects)
-	_load_objects(saved_objects, saved_box_goals, level_version)
+	_load_objects(saved_objects, saved_box_goals, level_version, is_saved_level)
 
 func _load_tile_layer(saved_tiles: Array, layer: TileMapLayer) -> void:
 	for tile in saved_tiles:
@@ -91,7 +92,12 @@ func load_box_resources(folder_path: String) -> Array[Resource]:
 	return resources
 
 
-func _load_objects(saved_objects: Array, goal_objects: Array, level_version: int) -> void:
+func _load_objects(
+	saved_objects: Array,
+	goal_objects: Array,
+	level_version: int,
+	is_saved_level: bool
+) -> void:
 	for object_data in saved_objects:
 		var object_type: String = object_data["type"]
 		var object_position := Vector2(float(object_data["x"]), float(object_data["y"]))
@@ -112,8 +118,7 @@ func _load_objects(saved_objects: Array, goal_objects: Array, level_version: int
 		if object_type == "goal":
 			var goal_instance : Goal = object_instance.instantiate()
 			goal_instance.global_position = object_position
-			# all goals in custom levels have -1 level num
-			goal_instance.goal_level_num = -1
+			goal_instance.goal_level_num = -1 if is_saved_level else GameManager.current_attempting_level
 			add_child(goal_instance)
 		# if the object is a normal box
 		if object_type == "normal_box":

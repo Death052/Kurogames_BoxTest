@@ -272,6 +272,7 @@ text = "Normal Box
 
 [node name="PlayerGoalCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1473895333]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 
 [node name="HBoxBoxes" type="VBoxContainer" parent="Interface/PalettePanel/PlayerGoalCenterContainer" unique_id=1603908021]

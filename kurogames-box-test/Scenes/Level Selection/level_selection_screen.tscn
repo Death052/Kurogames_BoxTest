@@ -101,7 +101,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Level 1"
 script = ExtResource("2_pgj7p")
-scene_path = "res://Scenes/Game Scene/game_scene_test.tscn"
+scene_path = "res://Scenes/Custom Level/custom_level.tscn"
+json_file = "res://Scenes/Custom Level/Default_Levels/Level_1.json"
 
 [node name="Level2Button" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=1044984556]
 custom_minimum_size = Vector2(150, 150)
@@ -122,6 +123,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Level 3"
 script = ExtResource("2_pgj7p")
+scene_path = "res://Scenes/Custom Level/custom_level.tscn"
+json_file = "res://Scenes/Custom Level/Default_Levels/Level_3.json"
 level_num = 2
 
 [node name="Level Editor" type="Button" parent="CenterContainer/Content/ButtonRow" unique_id=309878367]
