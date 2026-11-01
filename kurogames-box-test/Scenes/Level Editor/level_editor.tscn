@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bhsc0k1efrtin" path="res://Sprites/Entities/goal_icon.png" id="12_yu5dg"]
 [ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="13_yu5dg"]
 [ext_resource type="Script" uid="uid://bnr5vro2ut27b" path="res://Scenes/Level Editor/save.gd" id="14_1op21"]
+[ext_resource type="Script" uid="uid://b2eouq04u7u0r" path="res://Scenes/Level Editor/camera_editor.gd" id="14_qwbos"]
 [ext_resource type="Script" uid="uid://dysj7yfme5fm7" path="res://Scenes/Level Editor/box_goal_placing.gd" id="15_lepmc"]
 [ext_resource type="Script" uid="uid://dd3f8ga8pk3ph" path="res://Scenes/others_placing.gd" id="16_pv6ap"]
 [ext_resource type="Script" uid="uid://b4hdcpsk8wju2" path="res://Scenes/Level Editor/load_level_into_editor.gd" id="17_6s5a1"]
@@ -102,14 +103,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -342.19995
-offset_top = -84.0
+offset_left = -320.0
+offset_top = -76.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Interface/SaveLoadMarginContainer" unique_id=1362330163]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(300, 60)
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_1t7rw")
@@ -145,21 +148,25 @@ text = "Play
 "
 
 [node name="TopBar" type="PanelContainer" parent="Interface" unique_id=892561372]
-offset_right = 1152.0
+anchors_preset = 10
+anchor_right = 1.0
 offset_bottom = 56.0
+grow_horizontal = 2
 theme_override_styles/panel = ExtResource("5_1t7rw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Interface/TopBar" unique_id=561220331]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="ModeLabel" type="Label" parent="Interface/TopBar/HBoxContainer" unique_id=782445321]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Tool"
 vertical_alignment = 1
 
-[node name="Save" type="Button" parent="Interface/TopBar/HBoxContainer" unique_id=1175832872]
+[node name="ReturnToMenu" type="Button" parent="Interface/TopBar/HBoxContainer" unique_id=1175832872]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
@@ -168,10 +175,16 @@ text = "Return
 "
 
 [node name="PalettePanel" type="PanelContainer" parent="Interface" unique_id=809711709]
+custom_minimum_size = Vector2(272, 0)
+anchors_preset = -1
+anchor_right = 0.25
+anchor_bottom = 1.0
 offset_left = 8.0
 offset_top = 64.0
-offset_right = 280.0
-offset_bottom = 648.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = ExtResource("5_1t7rw")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Interface/PalettePanel" unique_id=739499007]
@@ -300,11 +313,16 @@ text = "Goal
 "
 
 [node name="PanelContainer" type="PanelContainer" parent="Interface" unique_id=1038285818]
-custom_minimum_size = Vector2(150, 0)
-offset_left = 290.0
+custom_minimum_size = Vector2(150, 194)
+anchors_preset = -1
+anchor_left = 0.25
+anchor_right = 0.25
+offset_left = 10.0
 offset_top = 64.0
-offset_right = 478.00006
+offset_right = 198.0
 offset_bottom = 258.0
+grow_horizontal = 2
+grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_1t7rw")
 
@@ -361,10 +379,17 @@ text = "Erase
 [node name="InputPopup" type="PanelContainer" parent="Interface" unique_id=2073500001]
 unique_name_in_owner = true
 visible = false
-offset_left = 400.0
-offset_top = 244.0
-offset_right = 752.0
-offset_bottom = 403.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.0
+offset_top = -80.0
+offset_right = 176.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
 
 [node name="Content" type="VBoxContainer" parent="Interface/InputPopup" unique_id=2073500002]
@@ -405,6 +430,7 @@ script = ExtResource("14_1op21")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=680932147]
 zoom = Vector2(3, 3)
+script = ExtResource("14_qwbos")
 
 [node name="BoxGoalPlacing" type="Node" parent="." unique_id=827132818 node_paths=PackedStringArray("main_editor")]
 script = ExtResource("15_lepmc")

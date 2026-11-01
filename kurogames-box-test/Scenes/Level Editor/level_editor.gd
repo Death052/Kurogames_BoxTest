@@ -45,6 +45,7 @@ var currently_selected_btn : int
 @onready var draw_button : Button = %Draw
 @onready var erase_button : Button = %Erase2
 var is_erasing := false
+@onready var return_menu_button : Button = %ReturnToMenu
 
 
 # buttons for instantiating boxes
@@ -99,6 +100,8 @@ func _ready() -> void:
 	# save pop up buttons
 	pop_up_submit.pressed.connect(_submit_new_save)
 	pop_up_cancel.pressed.connect(_cancel_new_save)
+	# return to menu button
+	return_menu_button.pressed.connect(_return_to_menu)
 
 	# Build the palette from every tile already defined in the two TileSet
 	# resources. The editor does not need a manually maintained tile list.
@@ -149,6 +152,12 @@ func _play_game() -> void:
 	#await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://Scenes/Custom Level/custom_level.tscn")
 
+
+func _return_to_menu() -> void:
+	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
+	await TransitionUi.slide_in(0.5)
+	#await get_tree().create_timer(0.3).timeout
+	get_tree().change_scene_to_file("res://Scenes/Level Selection/level_selection_screen.tscn")
 
 func _process(delta: float) -> void:
 	#if selected_layer == null:

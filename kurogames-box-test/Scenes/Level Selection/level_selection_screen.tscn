@@ -151,6 +151,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Return"
 
 [node name="SavedLevelsPanel" type="PanelContainer" parent="." unique_id=2073500010]
+visible = false
 custom_minimum_size = Vector2(520, 333.9)
 layout_mode = 1
 anchors_preset = 8
