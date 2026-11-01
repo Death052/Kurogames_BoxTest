@@ -110,6 +110,7 @@ func _ready() -> void:
 
 	# initially, default editor to the player menu
 	enable_buttons_and_interfaces()
+	draw_button.button_pressed = true
 	player_goal_btn.button_pressed = true
 	show_player_goal_editor()
 	saved_menu = currently_selected_btn
@@ -189,6 +190,20 @@ func _unhandled_input(event: InputEvent) -> void:
 	var tile_position: Vector2i = selected_layer.local_to_map(snapped_position)
 	selected_layer.set_cell(tile_position, selected_source_id, selected_atlas_coords)
 
+
+func disable_all_buttons():
+	erase_button.disabled = true
+	draw_button.disabled = true
+	save_button.disabled = true
+	play_button.disabled = true
+
+func enable_all_buttons():
+	erase_button.disabled = false
+	draw_button.disabled = false
+	save_button.disabled = false
+	play_button.disabled = false
+
+
 func _erase_mode() -> void:
 	is_erasing = true
 	erase_button.button_pressed = true
@@ -203,6 +218,7 @@ func _erase_mode() -> void:
 	mode_label.text = "Erase mode: click a tile or object to remove it"
 	# deactivate the menu on the left
 	saved_menu = currently_selected_btn
+	currently_selected_btn = -1
 	disable_buttons_and_interfaces()
 
 func _draw_mode() -> void:
@@ -214,13 +230,14 @@ func _draw_mode() -> void:
 	# show the menu and default it to the previously chosen draw menu
 	enable_buttons_and_interfaces()
 	# check what was the previous menu
-	currently_selected_btn = saved_menu
-	if currently_selected_btn == 0:
+	print("currently_selected_btn = ", currently_selected_btn)
+	if saved_menu == 0:
 		show_player_goal_editor()
-	elif currently_selected_btn == 1:
+	elif saved_menu == 1:
 		show_box_editor()
-	elif currently_selected_btn == 2:
+	elif saved_menu == 2:
 		show_tile_editor()
+	currently_selected_btn = saved_menu
 			
 func _erase_at() -> void:
 	var erase_position := tile_preview.global_position
@@ -248,7 +265,7 @@ func show_tile_editor() -> void:
 	if currently_selected_btn != 2:
 		tiles_scroll_container.visible = true
 		currently_selected_btn = 2
-		box_btn.button_pressed = true
+		tiles_btn.button_pressed = true
 		deselect_other_components(currently_selected_btn)
 
 func show_player_goal_editor() -> void:
@@ -262,7 +279,7 @@ func show_box_editor() -> void:
 	if currently_selected_btn != 1:
 		box_editor_center_container.visible = true
 		currently_selected_btn = 1
-		tiles_btn.button_pressed = true
+		box_btn.button_pressed = true
 		deselect_other_components(currently_selected_btn)
 
 func deselect_other_components(current_button : int) -> void:

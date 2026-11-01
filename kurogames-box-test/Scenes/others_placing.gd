@@ -11,13 +11,12 @@ class_name OthersSubEditor
 @export var goal_texture : Texture2D 
 @export var normal_box_texture : Texture2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
 
 func _place_other_location(object_type: String) -> void:
 	main_editor.disable_buttons_and_interfaces()
+	# make sure player can't press other buttons
+	main_editor.disable_all_buttons()
+	
 	main_editor.selected_layer = null
 	main_editor.selected_box_colour = ""
 	main_editor.selected_goal_colour = ""
@@ -56,6 +55,9 @@ func _place_other_at(position: Vector2) -> void:
 		return
 
 	main_editor.enable_buttons_and_interfaces()
+	# make sure player can press other buttons
+	main_editor.enable_all_buttons()
+	
 	if main_editor.selected_others == "player" || main_editor.selected_others == "goal":
 		main_editor.show_player_goal_editor()
 	if main_editor.selected_others == "normal_box":

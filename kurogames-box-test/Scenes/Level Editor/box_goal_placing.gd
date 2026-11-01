@@ -29,6 +29,9 @@ func _ready() -> void:
 func _place_box_location(colour : String) -> void:
 	# disable all buttons and interfaces 
 	main_editor.disable_buttons_and_interfaces()
+	# make sure player can't press other buttons
+	main_editor.disable_all_buttons()
+	
 	main_editor.selected_others = ""
 	# set tilepreview to the box sprite
 	if colour == "red":
@@ -117,6 +120,8 @@ func _place_box_goal_at(position: Vector2) -> void:
 	# after placing the goal, resume normal operations
 	# reactivate all buttons
 	main_editor.enable_buttons_and_interfaces()
+	# make sure player can press other buttons
+	main_editor.enable_all_buttons()
 	
 	main_editor.box_btn.button_pressed = true
 	main_editor.show_box_editor()

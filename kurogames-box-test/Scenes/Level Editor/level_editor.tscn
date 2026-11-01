@@ -4,10 +4,12 @@
 [ext_resource type="TileSet" uid="uid://cv6y6cg5mapl7" path="res://Sprites/Tilesets/Colliding.tres" id="2_colliding"]
 [ext_resource type="TileSet" uid="uid://b0765sao1ikyd" path="res://Sprites/Tilesets/NotColliding.tres" id="3_not_colliding"]
 [ext_resource type="Texture2D" uid="uid://xeld0mrjlpxe" path="res://Sprites/Editor/TilePlacceRef.png" id="4_0wrth"]
+[ext_resource type="StyleBox" uid="uid://bpppbkc6lujol" path="res://Systems/style_box_dark.tres" id="5_1t7rw"]
 [ext_resource type="Texture2D" uid="uid://rl6l28orm1q5" path="res://Sprites/Entities/box_goal_red_1.png" id="5_xlnsc"]
 [ext_resource type="Texture2D" uid="uid://dl4bdt112f47d" path="res://Sprites/Entities/box_red_1.png" id="5_yfyhu"]
 [ext_resource type="Texture2D" uid="uid://c358h6ru824ct" path="res://Sprites/Entities/box_goal_yellow_1.png" id="6_6bweo"]
 [ext_resource type="Texture2D" uid="uid://c31snrtar1dr3" path="res://Sprites/Entities/box_yellow_1.png" id="6_c2pho"]
+[ext_resource type="StyleBox" uid="uid://c81fjufv2d5e8" path="res://Systems/Button_Normal.tres" id="6_qwbos"]
 [ext_resource type="Texture2D" uid="uid://ynsd4d1o43mu" path="res://Sprites/Entities/box_blue_1.png" id="7_fntvi"]
 [ext_resource type="Texture2D" uid="uid://b3ueh31ovakhf" path="res://Sprites/Entities/box_goal_blue_1.png" id="7_sauus"]
 [ext_resource type="Texture2D" uid="uid://7daw4f74ywlq" path="res://Sprites/Entities/player_icon.png" id="11_sauus"]
@@ -17,20 +19,6 @@
 [ext_resource type="Script" uid="uid://dysj7yfme5fm7" path="res://Scenes/Level Editor/box_goal_placing.gd" id="15_lepmc"]
 [ext_resource type="Script" uid="uid://dd3f8ga8pk3ph" path="res://Scenes/others_placing.gd" id="16_pv6ap"]
 [ext_resource type="Script" uid="uid://b4hdcpsk8wju2" path="res://Scenes/Level Editor/load_level_into_editor.gd" id="17_6s5a1"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1op21"]
-content_margin_left = 12.0
-content_margin_top = 8.0
-content_margin_right = 12.0
-content_margin_bottom = 8.0
-bg_color = Color(0.04, 0.06, 0.1, 0.9)
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lepmc"]
-bg_color = Color(0.28194702, 0.3177633, 0.4809339, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv6ap"]
 bg_color = Color(0.28235295, 0.31764707, 0.48235294, 1)
@@ -124,7 +112,7 @@ mouse_filter = 2
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_1op21")
+theme_override_styles/panel = ExtResource("5_1t7rw")
 
 [node name="MarginContainer" type="MarginContainer" parent="Interface/SaveLoadMarginContainer/PanelContainer" unique_id=1870666399]
 layout_mode = 2
@@ -144,7 +132,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_lepmc")
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Save"
 
 [node name="Play" type="Button" parent="Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=205384531]
@@ -159,18 +147,32 @@ text = "Play
 [node name="TopBar" type="PanelContainer" parent="Interface" unique_id=892561372]
 offset_right = 1152.0
 offset_bottom = 56.0
+theme_override_styles/panel = ExtResource("5_1t7rw")
 
-[node name="ModeLabel" type="Label" parent="Interface/TopBar" unique_id=782445321]
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/TopBar" unique_id=561220331]
+layout_mode = 2
+
+[node name="ModeLabel" type="Label" parent="Interface/TopBar/HBoxContainer" unique_id=782445321]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(1000, 0)
 layout_mode = 2
 text = "Tool"
 vertical_alignment = 1
+
+[node name="Save" type="Button" parent="Interface/TopBar/HBoxContainer" unique_id=1175832872]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = ExtResource("6_qwbos")
+text = "Return
+"
 
 [node name="PalettePanel" type="PanelContainer" parent="Interface" unique_id=809711709]
 offset_left = 8.0
 offset_top = 64.0
 offset_right = 280.0
 offset_bottom = 648.0
+theme_override_styles/panel = ExtResource("5_1t7rw")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Interface/PalettePanel" unique_id=739499007]
 unique_name_in_owner = true
@@ -203,6 +205,7 @@ expand_mode = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Red Box"
 
 [node name="HBoxYellow" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=1028071004]
@@ -218,6 +221,7 @@ expand_mode = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Yellow Box"
 
 [node name="HBoxBlue" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=345898153]
@@ -233,6 +237,7 @@ expand_mode = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Blue Box"
 
 [node name="HBoxNormal" type="HBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes" unique_id=2105626208]
@@ -248,12 +253,12 @@ expand_mode = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Normal Box
 "
 
 [node name="PlayerGoalCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1473895333]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 
 [node name="HBoxBoxes" type="VBoxContainer" parent="Interface/PalettePanel/PlayerGoalCenterContainer" unique_id=1603908021]
@@ -273,6 +278,7 @@ stretch_mode = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Player"
 
 [node name="HBoxYellow" type="HBoxContainer" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes" unique_id=1023556474]
@@ -289,50 +295,65 @@ stretch_mode = 4
 unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 text = "Goal
 "
 
-[node name="ObjectTools" type="VBoxContainer" parent="Interface" unique_id=540618384]
-offset_left = 296.0
-offset_top = 72.0
-offset_right = 400.0
-offset_bottom = 220.0
-theme_override_constants/separation = 8
+[node name="PanelContainer" type="PanelContainer" parent="Interface" unique_id=1038285818]
+custom_minimum_size = Vector2(150, 0)
+offset_left = 290.0
+offset_top = 64.0
+offset_right = 478.00006
+offset_bottom = 258.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("5_1t7rw")
 
-[node name="PlayerGoalButton" type="Button" parent="Interface/ObjectTools" unique_id=232398151]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(104, 40)
+[node name="ObjectTools" type="VBoxContainer" parent="Interface/PanelContainer" unique_id=540618384]
 layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="PlayerGoalButton" type="Button" parent="Interface/PanelContainer/ObjectTools" unique_id=232398151]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 40)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
+toggle_mode = true
 text = "Player/Goal"
 
-[node name="BoxButton" type="Button" parent="Interface/ObjectTools" unique_id=980899782]
+[node name="BoxButton" type="Button" parent="Interface/PanelContainer/ObjectTools" unique_id=980899782]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(104, 40)
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
+toggle_mode = true
 text = "Box"
 
-[node name="Tiles" type="Button" parent="Interface/ObjectTools" unique_id=1013166456]
+[node name="Tiles" type="Button" parent="Interface/PanelContainer/ObjectTools" unique_id=1013166456]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(104, 40)
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 toggle_mode = true
 text = "Tiles"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Interface/ObjectTools" unique_id=1254608935]
+[node name="HBoxContainer" type="HBoxContainer" parent="Interface/PanelContainer/ObjectTools" unique_id=1254608935]
 layout_mode = 2
+alignment = 1
 
-[node name="Draw" type="Button" parent="Interface/ObjectTools/HBoxContainer" unique_id=802960104]
+[node name="Draw" type="Button" parent="Interface/PanelContainer/ObjectTools/HBoxContainer" unique_id=802960104]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(104, 40)
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 toggle_mode = true
 text = "Draw
 "
 
-[node name="Erase2" type="Button" parent="Interface/ObjectTools/HBoxContainer" unique_id=1199581316]
+[node name="Erase2" type="Button" parent="Interface/PanelContainer/ObjectTools/HBoxContainer" unique_id=1199581316]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(104, 40)
+custom_minimum_size = Vector2(80, 40)
 layout_mode = 2
+theme_override_styles/normal = ExtResource("6_qwbos")
 toggle_mode = true
 text = "Erase
 "
