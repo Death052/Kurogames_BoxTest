@@ -4,12 +4,12 @@ class_name BoxGoalSubEditor
 @export var main_editor : MainEditor
 
 # Sprite References
-@onready var red_box_sprite : Sprite2D = $"../EditorCanvas/Objects/RedBox"
-@onready var red_box_goal_sprite : Sprite2D = $"../EditorCanvas/Objects/RedGoal"
-@onready var yellow_box_sprite : Sprite2D = $"../EditorCanvas/Objects/YellowBox"
-@onready var yellow_box_goal_sprite : Sprite2D = $"../EditorCanvas/Objects/YellowGoal"
-@onready var blue_box_sprite : Sprite2D = $"../EditorCanvas/Objects/BlueBox"
-@onready var blue_box_goal_sprite : Sprite2D = $"../EditorCanvas/Objects/BlueGoal"
+@onready var red_box_sprite : Sprite2D = %RedBox
+@onready var red_box_goal_sprite : Sprite2D = %RedGoal
+@onready var yellow_box_sprite : Sprite2D = %YellowBox
+@onready var yellow_box_goal_sprite : Sprite2D = %YellowGoal
+@onready var blue_box_sprite : Sprite2D = %BlueBox
+@onready var blue_box_goal_sprite : Sprite2D = %BlueGoal
 
 # box and goal related textures
 @export var red_box_texture : Texture2D

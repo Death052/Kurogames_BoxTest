@@ -62,34 +62,46 @@ metadata/hide_game_ui = true
 [node name="EditorCanvas" type="Node2D" parent="." unique_id=1086021945]
 
 [node name="NotCollidingTiles" type="TileMapLayer" parent="EditorCanvas" unique_id=480689601]
+unique_name_in_owner = true
 z_index = -20
 tile_set = ExtResource("3_not_colliding")
 
 [node name="CollidingTiles" type="TileMapLayer" parent="EditorCanvas" unique_id=1113108844]
+unique_name_in_owner = true
 z_index = -10
 tile_set = ExtResource("2_colliding")
 
 [node name="Objects" type="Node2D" parent="EditorCanvas" unique_id=1175539135]
+unique_name_in_owner = true
 
 [node name="Player" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=868555281]
+unique_name_in_owner = true
 
 [node name="RedBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1991260664]
+unique_name_in_owner = true
 
 [node name="RedGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1408040563]
+unique_name_in_owner = true
 
 [node name="BlueBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=2053683092]
+unique_name_in_owner = true
 
 [node name="BlueGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=307711678]
+unique_name_in_owner = true
 
 [node name="YellowBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=2100778391]
+unique_name_in_owner = true
 
 [node name="YellowGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1432641866]
+unique_name_in_owner = true
 
 [node name="Goal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1608448996]
+unique_name_in_owner = true
 
 [node name="SpritePreviews" type="Node2D" parent="EditorCanvas" unique_id=123339175]
 
 [node name="TilePreview" type="Sprite2D" parent="EditorCanvas/SpritePreviews" unique_id=1291993640]
+unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.27450982)
 z_index = 10
 texture = ExtResource("4_0wrth")
@@ -128,6 +140,7 @@ theme_override_constants/separation = 16
 alignment = 1
 
 [node name="Save" type="Button" parent="Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1778237541]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
@@ -135,6 +148,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lepmc")
 text = "Save"
 
 [node name="Play" type="Button" parent="Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=205384531]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
@@ -147,6 +161,7 @@ offset_right = 1152.0
 offset_bottom = 56.0
 
 [node name="ModeLabel" type="Label" parent="Interface/TopBar" unique_id=782445321]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Tool"
 vertical_alignment = 1
@@ -158,14 +173,17 @@ offset_right = 280.0
 offset_bottom = 648.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Interface/PalettePanel" unique_id=739499007]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
 [node name="Palette" type="VBoxContainer" parent="Interface/PalettePanel/ScrollContainer" unique_id=1782239465]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="BoxCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1878472362]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
@@ -182,6 +200,7 @@ texture = ExtResource("5_yfyhu")
 expand_mode = 1
 
 [node name="RedBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxRed" unique_id=1180253399]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
 text = "Red Box"
@@ -196,6 +215,7 @@ texture = ExtResource("6_c2pho")
 expand_mode = 1
 
 [node name="YellowBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxYellow" unique_id=1012289828]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
 text = "Yellow Box"
@@ -210,6 +230,7 @@ texture = ExtResource("7_fntvi")
 expand_mode = 1
 
 [node name="BlueBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxBlue" unique_id=1491837840]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
 text = "Blue Box"
@@ -224,12 +245,14 @@ texture = ExtResource("13_yu5dg")
 expand_mode = 1
 
 [node name="NormalBoxBtn" type="Button" parent="Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxNormal" unique_id=337373933]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
 text = "Normal Box
 "
 
 [node name="PlayerGoalCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1473895333]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 
@@ -247,6 +270,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="PlayerBtn" type="Button" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxRed" unique_id=316406422]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
 text = "Player"
@@ -262,6 +286,7 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="GoalBtn" type="Button" parent="Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxYellow" unique_id=1770436240]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(170.395, 40)
 layout_mode = 2
 text = "Goal
@@ -275,16 +300,19 @@ offset_bottom = 220.0
 theme_override_constants/separation = 8
 
 [node name="PlayerGoalButton" type="Button" parent="Interface/ObjectTools" unique_id=232398151]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(104, 40)
 layout_mode = 2
 text = "Player/Goal"
 
 [node name="BoxButton" type="Button" parent="Interface/ObjectTools" unique_id=980899782]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(104, 40)
 layout_mode = 2
 text = "Box"
 
 [node name="Tiles" type="Button" parent="Interface/ObjectTools" unique_id=1013166456]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(104, 40)
 layout_mode = 2
 toggle_mode = true
@@ -294,6 +322,7 @@ text = "Tiles"
 layout_mode = 2
 
 [node name="Draw" type="Button" parent="Interface/ObjectTools/HBoxContainer" unique_id=802960104]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(104, 40)
 layout_mode = 2
 toggle_mode = true
@@ -301,6 +330,7 @@ text = "Draw
 "
 
 [node name="Erase2" type="Button" parent="Interface/ObjectTools/HBoxContainer" unique_id=1199581316]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(104, 40)
 layout_mode = 2
 toggle_mode = true
@@ -308,6 +338,7 @@ text = "Erase
 "
 
 [node name="InputPopup" type="PanelContainer" parent="Interface" unique_id=2073500001]
+unique_name_in_owner = true
 visible = false
 offset_left = 400.0
 offset_top = 244.0
@@ -326,6 +357,7 @@ text = "Create New Save"
 horizontal_alignment = 1
 
 [node name="Input" type="LineEdit" parent="Interface/InputPopup/Content" unique_id=2073500004]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 placeholder_text = "Type here..."
@@ -336,11 +368,13 @@ theme_override_constants/separation = 12
 alignment = 1
 
 [node name="Cancel" type="Button" parent="Interface/InputPopup/Content/Buttons" unique_id=2073500006]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 text = "Cancel"
 
 [node name="Submit" type="Button" parent="Interface/InputPopup/Content/Buttons" unique_id=2073500007]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 text = "Submit"

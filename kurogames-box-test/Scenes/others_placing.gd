@@ -4,8 +4,8 @@ class_name OthersSubEditor
 @export var main_editor : MainEditor
 
 # Sprite References
-@onready var player_sprite : Sprite2D = $"../EditorCanvas/Objects/Player"
-@onready var goal_sprite : Sprite2D = $"../EditorCanvas/Objects/Goal"
+@onready var player_sprite : Sprite2D = %Player
+@onready var goal_sprite : Sprite2D = %Goal
 # player and goal related textures
 @export var player_texture : Texture2D 
 @export var goal_texture : Texture2D 

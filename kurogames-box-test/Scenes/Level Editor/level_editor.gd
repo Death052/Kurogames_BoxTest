@@ -9,24 +9,24 @@ const NOT_COLLIDING_TILES := preload("res://Sprites/Tilesets/NotColliding.tres")
 
 # These nodes are defined in level_editor.tscn and are used by the editor
 # to place tiles and update the status text.
-@onready var colliding_layer: TileMapLayer = $EditorCanvas/CollidingTiles
-@onready var not_colliding_layer: TileMapLayer = $EditorCanvas/NotCollidingTiles
-@onready var tiles_scroll_container: ScrollContainer = $Interface/PalettePanel/ScrollContainer
-@onready var palette: VBoxContainer = $Interface/PalettePanel/ScrollContainer/Palette
-@onready var mode_label: Label = $Interface/TopBar/ModeLabel
-@onready var tile_preview: Sprite2D = $EditorCanvas/SpritePreviews/TilePreview
-@onready var sprites_list: Node2D = $EditorCanvas/Objects
+@onready var colliding_layer: TileMapLayer = %CollidingTiles
+@onready var not_colliding_layer: TileMapLayer = %NotCollidingTiles
+@onready var tiles_scroll_container: ScrollContainer = %ScrollContainer
+@onready var palette: VBoxContainer = %Palette
+@onready var mode_label: Label = %ModeLabel
+@onready var tile_preview: Sprite2D = %TilePreview
+@onready var sprites_list: Node2D = %Objects
 
 # save panel buttons and pop up
-@onready var input_pop_up : PanelContainer = $Interface/InputPopup
-@onready var pop_up_input : LineEdit = $Interface/InputPopup/Content/Input
-@onready var pop_up_submit : Button = $Interface/InputPopup/Content/Buttons/Submit
-@onready var pop_up_cancel : Button = $Interface/InputPopup/Content/Buttons/Cancel
+@onready var input_pop_up : PanelContainer = %InputPopup
+@onready var pop_up_input : LineEdit = %Input
+@onready var pop_up_submit : Button = %Submit
+@onready var pop_up_cancel : Button = %Cancel
 
 
 @export var default_preview_sprite : Texture2D
 
-@onready var box_editor_center_container : CenterContainer = $Interface/PalettePanel/BoxCenterContainer
+@onready var box_editor_center_container : CenterContainer = %BoxCenterContainer
 
 # The selected tile determines both what gets placed and which tilemap
 # receives it. Colliding and non-colliding tiles use separate layers.
@@ -38,20 +38,20 @@ var selected_goal_colour := ""
 var selected_others := ""
 
 # buttons to navigate different menus
-@onready var tiles_btn : Button = $Interface/ObjectTools/Tiles
-@onready var box_btn : Button = $Interface/ObjectTools/BoxButton
-@onready var player_goal_btn : Button = $Interface/ObjectTools/PlayerGoalButton
+@onready var tiles_btn : Button = %Tiles
+@onready var box_btn : Button = %BoxButton
+@onready var player_goal_btn : Button = %PlayerGoalButton
 var currently_selected_btn : int
-@onready var draw_button : Button = $Interface/ObjectTools/HBoxContainer/Draw
-@onready var erase_button : Button = $Interface/ObjectTools/HBoxContainer/Erase2
+@onready var draw_button : Button = %Draw
+@onready var erase_button : Button = %Erase2
 var is_erasing := false
 
 
 # buttons for instantiating boxes
-@onready var red_box_btn : Button = $Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxRed/RedBoxBtn
-@onready var yellow_box_btn : Button = $Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxYellow/YellowBoxBtn
-@onready var blue_box_btn : Button = $Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxBlue/BlueBoxBtn
-@onready var normal_box_btn : Button = $Interface/PalettePanel/BoxCenterContainer/HBoxBoxes/HBoxNormal/NormalBoxBtn
+@onready var red_box_btn : Button = %RedBoxBtn
+@onready var yellow_box_btn : Button = %YellowBoxBtn
+@onready var blue_box_btn : Button = %BlueBoxBtn
+@onready var normal_box_btn : Button = %NormalBoxBtn
 
 
 
@@ -60,13 +60,13 @@ var is_erasing := false
 var selected_box : String = ""
 
 # buttons for dealing with player / goal
-@onready var player_btn : Button = $Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxRed/PlayerBtn
-@onready var goal_btn : Button = $Interface/PalettePanel/PlayerGoalCenterContainer/HBoxBoxes/HBoxYellow/GoalBtn
-@onready var player_goal_editor_center_container : CenterContainer = $Interface/PalettePanel/PlayerGoalCenterContainer
+@onready var player_btn : Button = %PlayerBtn
+@onready var goal_btn : Button = %GoalBtn
+@onready var player_goal_editor_center_container : CenterContainer = %PlayerGoalCenterContainer
 
 # for saving and playing
-@onready var save_button : Button = $Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer/Save
-@onready var play_button : Button = $Interface/SaveLoadMarginContainer/PanelContainer/MarginContainer/HBoxContainer/Play
+@onready var save_button : Button = %Save
+@onready var play_button : Button = %Play
 @export var save_node : SaveLevel
 
 var saved_menu : int
