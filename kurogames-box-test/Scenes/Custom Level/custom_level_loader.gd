@@ -30,7 +30,7 @@ const coloured_box_pair = preload("res://Entities/Box Pair/box_pair.tscn")
 
 func _ready() -> void:
 	y_sort_enabled = true
-	load_level("res://Scenes/Custom Level/Saved_Levels/level1.json")
+	load_level(GameManager.loaded_level_json)
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_out(0.5)
 

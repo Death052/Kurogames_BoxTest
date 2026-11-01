@@ -1,0 +1,86 @@
+{
+	"objects": [
+		{
+			"type": "player",
+			"x": 32.0,
+			"y": 32.0
+		},
+		{
+			"type": "yellow_box",
+			"x": 64.0,
+			"y": -32.0
+		},
+		{
+			"type": "yellow_goal",
+			"x": 80.0,
+			"y": 0.0
+		},
+		{
+			"type": "goal",
+			"x": 32.0,
+			"y": -48.0
+		},
+		{
+			"type": "normal_box",
+			"x": 96.0,
+			"y": 0.0
+		},
+		{
+			"type": "normal_box",
+			"x": 112.0,
+			"y": 0.0
+		},
+		{
+			"type": "normal_box",
+			"x": 128.0,
+			"y": 0.0
+		},
+		{
+			"type": "normal_box",
+			"x": 112.0,
+			"y": -16.0
+		},
+		{
+			"type": "normal_box",
+			"x": 112.0,
+			"y": -32.0
+		}
+	],
+	"tiles": {
+		"colliding": [],
+		"not_colliding": [
+			{
+				"alternative": 0,
+				"atlas_x": 0,
+				"atlas_y": 1,
+				"source_id": 0,
+				"x": 0,
+				"y": -1
+			},
+			{
+				"alternative": 0,
+				"atlas_x": 0,
+				"atlas_y": 1,
+				"source_id": 0,
+				"x": 0,
+				"y": 0
+			},
+			{
+				"alternative": 0,
+				"atlas_x": 0,
+				"atlas_y": 1,
+				"source_id": 0,
+				"x": 0,
+				"y": 1
+			},
+			{
+				"alternative": 0,
+				"atlas_x": 0,
+				"atlas_y": 1,
+				"source_id": 0,
+				"x": 0,
+				"y": 2
+			}
+		]
+	}
+}

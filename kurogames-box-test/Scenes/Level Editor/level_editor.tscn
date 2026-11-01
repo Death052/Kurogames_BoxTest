@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://cs0eupapg70uu" path="res://Sprites/Entities/box.png" id="13_yu5dg"]
 [ext_resource type="Script" uid="uid://bnr5vro2ut27b" path="res://Scenes/Level Editor/save.gd" id="14_1op21"]
 [ext_resource type="Script" uid="uid://dysj7yfme5fm7" path="res://Scenes/Level Editor/box_goal_placing.gd" id="15_lepmc"]
+[ext_resource type="Script" uid="uid://dd3f8ga8pk3ph" path="res://Scenes/others_placing.gd" id="16_pv6ap"]
+[ext_resource type="Script" uid="uid://b4hdcpsk8wju2" path="res://Scenes/Level Editor/load_level_into_editor.gd" id="17_6s5a1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1op21"]
 content_margin_left = 12.0
@@ -33,18 +35,27 @@ bg_color = Color(0.28194702, 0.3177633, 0.4809339, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pv6ap"]
 bg_color = Color(0.28235295, 0.31764707, 0.48235294, 1)
 
-[node name="LevelEditor" type="Node2D" unique_id=2147455474 node_paths=PackedStringArray("save_node")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_popup"]
+content_margin_left = 20.0
+content_margin_top = 16.0
+content_margin_right = 20.0
+content_margin_bottom = 16.0
+bg_color = Color(0.04, 0.06, 0.1, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28235295, 0.31764707, 0.48235294, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="LevelEditor" type="Node2D" unique_id=2147455474 node_paths=PackedStringArray("box_goal_editor", "others_editor", "save_node")]
 script = ExtResource("1_editor")
+box_goal_editor = NodePath("BoxGoalPlacing")
+others_editor = NodePath("PlaceOthers")
 default_preview_sprite = ExtResource("4_0wrth")
-red_box_texture = ExtResource("5_yfyhu")
-yellow_box_texture = ExtResource("6_c2pho")
-blue_box_texture = ExtResource("7_fntvi")
-red_box_goal_texture = ExtResource("5_xlnsc")
-yellow_box_goal_texture = ExtResource("6_6bweo")
-blue_box_goal_texture = ExtResource("7_sauus")
-normal_box_texture = ExtResource("13_yu5dg")
-player_texture = ExtResource("11_sauus")
-goal_texture = ExtResource("12_yu5dg")
 save_node = NodePath("SaveLevel")
 metadata/hide_game_ui = true
 
@@ -164,6 +175,7 @@ layout_mode = 2
 theme_override_constants/separation = 12
 
 [node name="BoxCenterContainer" type="CenterContainer" parent="Interface/PalettePanel" unique_id=1878472362]
+visible = false
 layout_mode = 2
 
 [node name="HBoxBoxes" type="VBoxContainer" parent="Interface/PalettePanel/BoxCenterContainer" unique_id=1469535057]
@@ -304,11 +316,66 @@ toggle_mode = true
 text = "Erase
 "
 
+[node name="InputPopup" type="PanelContainer" parent="Interface" unique_id=2073500001]
+visible = false
+offset_left = 400.0
+offset_top = 244.0
+offset_right = 752.0
+offset_bottom = 403.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_popup")
+
+[node name="Content" type="VBoxContainer" parent="Interface/InputPopup" unique_id=2073500002]
+custom_minimum_size = Vector2(312, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Interface/InputPopup/Content" unique_id=2073500003]
+layout_mode = 2
+text = "Create New Save"
+horizontal_alignment = 1
+
+[node name="Input" type="LineEdit" parent="Interface/InputPopup/Content" unique_id=2073500004]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+placeholder_text = "Type here..."
+
+[node name="Buttons" type="HBoxContainer" parent="Interface/InputPopup/Content" unique_id=2073500005]
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="Cancel" type="Button" parent="Interface/InputPopup/Content/Buttons" unique_id=2073500006]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Cancel"
+
+[node name="Submit" type="Button" parent="Interface/InputPopup/Content/Buttons" unique_id=2073500007]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+text = "Submit"
+
 [node name="SaveLevel" type="Node" parent="." unique_id=1135324774]
 script = ExtResource("14_1op21")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=680932147]
 zoom = Vector2(3, 3)
 
-[node name="BoxPlacing" type="Node" parent="." unique_id=827132818]
+[node name="BoxGoalPlacing" type="Node" parent="." unique_id=827132818 node_paths=PackedStringArray("main_editor")]
 script = ExtResource("15_lepmc")
+main_editor = NodePath("..")
+red_box_texture = ExtResource("5_yfyhu")
+yellow_box_texture = ExtResource("6_c2pho")
+blue_box_texture = ExtResource("7_fntvi")
+red_box_goal_texture = ExtResource("5_xlnsc")
+yellow_box_goal_texture = ExtResource("6_6bweo")
+blue_box_goal_texture = ExtResource("7_sauus")
+
+[node name="PlaceOthers" type="Node" parent="." unique_id=1695757596 node_paths=PackedStringArray("main_editor")]
+script = ExtResource("16_pv6ap")
+main_editor = NodePath("..")
+player_texture = ExtResource("11_sauus")
+goal_texture = ExtResource("12_yu5dg")
+normal_box_texture = ExtResource("13_yu5dg")
+
+[node name="Load_Json" type="Node" parent="." unique_id=1067008335]
+script = ExtResource("17_6s5a1")

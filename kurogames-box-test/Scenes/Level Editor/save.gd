@@ -56,7 +56,6 @@ func _save_objects(sprites_list : Node2D) -> Array[Dictionary]:
 			"x": child.position.x,
 			"y": child.position.y
 		})
-	print("saved_objects = ", saved_objects)
 	return saved_objects
 
 func _get_object_type(sprite: Sprite2D) -> String:
