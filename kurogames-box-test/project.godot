@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Kurogames_BoxTest"
+run/main_scene="uid://cg18x04iwvfpw"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
