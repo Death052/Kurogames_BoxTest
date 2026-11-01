@@ -52,6 +52,8 @@ func _update_child_positions() -> void:
 	
 # called when the box is at the box goal
 func box_in_place():
+	# play sound when box is in place
+	SoundManager.play_sfx("PressureActivate_SFX")
 	box_ani.play("Placed")
 	box_pres_ani.play("Pressed")
 	box_pair_is_reached = true

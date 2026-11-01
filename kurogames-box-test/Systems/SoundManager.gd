@@ -33,7 +33,7 @@ func _connect_button(button: BaseButton):
 		button.pressed.connect(_on_button_pressed)
 
 func _on_button_pressed():
-	play_sfx("SeButtonClick")
+	play_sfx("Click_SFX")
 
 func _cache_players():
 	# Cache BGM players

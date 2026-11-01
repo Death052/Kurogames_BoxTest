@@ -8,13 +8,15 @@ const SAVED_LEVELS_PATH := "res://Scenes/Custom Level/Saved_Levels"
 @onready var full_panel : PanelContainer = $"../../../../SavedLevelsPanel"
 @onready var level_list: VBoxContainer = $"../../../../SavedLevelsPanel/Content/ScrollContainer/LevelList"
 @onready var level_row_template: HBoxContainer = $"../../../../SavedLevelsPanel/Content/ScrollContainer/LevelList/LevelRow"
-@onready var back_btn : Button = $"../../../../SavedLevelsPanel/Content/CenterContainer/Back"
+@onready var back_btn : Button = %Back
+@onready var create_new_btn : Button = %"Create New"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# connect the editor button to the show panel function
 	pressed.connect(show_panel)
 	back_btn.pressed.connect(remove_panel)
+	create_new_btn.pressed.connect(create_new)
 	
 	_load_saved_levels()
 
@@ -24,6 +26,16 @@ func show_panel():
 
 func remove_panel():
 	full_panel.visible = false
+
+# go into editor scene without any loaded Json
+func create_new():
+	GameManager.loaded_level_json = ""
+	GameManager.in_editor_test = true
+	
+	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
+	await TransitionUi.slide_in(0.5)
+	get_tree().change_scene_to_file(editor_level_path)
+	
 
 # load the available saved json levels and show it into the scroll menu
 func _load_saved_levels() -> void:

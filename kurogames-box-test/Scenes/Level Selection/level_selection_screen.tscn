@@ -151,7 +151,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Return"
 
 [node name="SavedLevelsPanel" type="PanelContainer" parent="." unique_id=2073500010]
-visible = false
 custom_minimum_size = Vector2(520, 333.9)
 layout_mode = 1
 anchors_preset = 8
@@ -219,7 +218,21 @@ text = "Delete"
 [node name="CenterContainer" type="CenterContainer" parent="SavedLevelsPanel/Content" unique_id=1304008157]
 layout_mode = 2
 
-[node name="Back" type="Button" parent="SavedLevelsPanel/Content/CenterContainer" unique_id=1491159398]
+[node name="HBoxContainer" type="HBoxContainer" parent="SavedLevelsPanel/Content/CenterContainer" unique_id=955721783]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Create New" type="Button" parent="SavedLevelsPanel/Content/CenterContainer/HBoxContainer" unique_id=1006075205]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_jglkl")
+text = "Create New
+"
+
+[node name="Back" type="Button" parent="SavedLevelsPanel/Content/CenterContainer/HBoxContainer" unique_id=1491159398]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22
