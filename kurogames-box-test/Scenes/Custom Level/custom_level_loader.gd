@@ -127,7 +127,6 @@ func _load_objects(
 			normal_box_instance.position = box_position
 			normal_box_instance.box_position = box_position
 			normal_box_instance.z_index = 0
-			normal_box_instance.collision_mask = 10
 			add_child(normal_box_instance)
 			
 		# if the object is a coloured box

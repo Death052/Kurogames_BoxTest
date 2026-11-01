@@ -139,20 +139,6 @@ script = ExtResource("3_jglkl")
 editor_level_path = "res://Scenes/Level Editor/level_editor.tscn"
 custom_level_path = "res://Scenes/Custom Level/custom_level.tscn"
 
-[node name="BackButtonMargin" type="MarginContainer" parent="CenterContainer/Content" unique_id=1473107464]
-custom_minimum_size = Vector2(0, 32)
-layout_mode = 2
-theme_override_constants/margin_top = 36
-
-[node name="Back Button" type="Button" parent="CenterContainer/Content/BackButtonMargin" unique_id=506276182]
-custom_minimum_size = Vector2(96, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = SubResource("StyleBoxFlat_button")
-theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
-text = "Return"
-
 [node name="SavedLevelsPanel" type="PanelContainer" parent="." unique_id=2073500010]
 visible = false
 custom_minimum_size = Vector2(520, 333.9)

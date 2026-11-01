@@ -37,18 +37,22 @@ func get_push_speed(player_speed: float, player_mass: float) -> float:
 	return player_speed / (1.0 + push_mass / player_mass)
 # Box movement when being pushed
 func push(push_direction: Vector2, speed: float) -> void:
-	if _is_blocked_by_box():
+	if _is_blocked_by_box(push_direction):
 		stop_pushing()
 		return
 	linear_velocity = push_direction * speed
 
 
-func _is_blocked_by_box() -> bool:
+func _is_blocked_by_box(push_direction: Vector2) -> bool:
 	if box_blocker_area == null:
 		return false
 
 	for body in box_blocker_area.get_overlapping_bodies():
-		if body != self and body is Pushable:
+		if body == self or not body is Pushable:
+			continue
+
+		var to_body := body.global_position - global_position
+		if to_body.length_squared() > 0.0 and to_body.normalized().dot(push_direction) > 0.5:
 			return true
 
 	return false

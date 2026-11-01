@@ -56,23 +56,23 @@ goal_level_num = 1
 [node name="Normal_Box" parent="." unique_id=723686871 instance=ExtResource("9_fj3y8")]
 z_index = 0
 position = Vector2(8, -90)
-collision_mask = 10
+collision_mask = 46
 box_position = Vector2(8, -90)
 
 [node name="Normal_Box2" parent="." unique_id=513732658 instance=ExtResource("9_fj3y8")]
 z_index = 0
 position = Vector2(88, -90)
-collision_mask = 10
+collision_mask = 46
 box_position = Vector2(88, -90)
 
 [node name="Normal_Box3" parent="." unique_id=1587609253 instance=ExtResource("9_fj3y8")]
 z_index = 0
 position = Vector2(68, -32)
-collision_mask = 10
+collision_mask = 46
 box_position = Vector2(68, -32)
 
 [node name="Normal_Box4" parent="." unique_id=351403575 instance=ExtResource("9_fj3y8")]
 z_index = 0
 position = Vector2(88, -49)
-collision_mask = 10
+collision_mask = 46
 box_position = Vector2(88, -49)

@@ -176,8 +176,11 @@ func _unhandled_input(event: InputEvent) -> void:
 	# A left click places the currently selected tile. UI clicks are handled
 	# by the UI controls and do not reach this method.
 	if event is InputEventMouseMotion:
-		if event.button_mask & MOUSE_BUTTON_MASK_LEFT and selected_layer != null and not is_erasing:
-			_paint_tile_at_mouse()
+		if event.button_mask & MOUSE_BUTTON_MASK_LEFT:
+			if is_erasing:
+				_erase_at()
+			elif selected_layer != null:
+				_paint_tile_at_mouse()
 		return
 
 	if not event is InputEventMouseButton:
