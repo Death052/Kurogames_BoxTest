@@ -72,28 +72,20 @@ tile_set = ExtResource("2_colliding")
 [node name="Objects" type="Node2D" parent="EditorCanvas" unique_id=1175539135]
 
 [node name="Player" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=868555281]
-offset = Vector2(8, 8)
 
 [node name="RedBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1991260664]
-offset = Vector2(8, 8)
 
 [node name="RedGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1408040563]
-offset = Vector2(8, 8)
 
 [node name="BlueBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=2053683092]
-offset = Vector2(8, 8)
 
 [node name="BlueGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=307711678]
-offset = Vector2(8, 8)
 
 [node name="YellowBox" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=2100778391]
-offset = Vector2(8, 8)
 
 [node name="YellowGoal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1432641866]
-offset = Vector2(8, 8)
 
 [node name="Goal" type="Sprite2D" parent="EditorCanvas/Objects" unique_id=1608448996]
-offset = Vector2(8, 8)
 
 [node name="SpritePreviews" type="Node2D" parent="EditorCanvas" unique_id=123339175]
 
@@ -101,7 +93,6 @@ offset = Vector2(8, 8)
 modulate = Color(1, 1, 1, 0.27450982)
 z_index = 10
 texture = ExtResource("4_0wrth")
-offset = Vector2(8, 8)
 
 [node name="Interface" type="CanvasLayer" parent="." unique_id=846554770]
 

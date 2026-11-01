@@ -49,7 +49,6 @@ func _place_other_at(position: Vector2) -> void:
 	elif main_editor.selected_others == "normal_box":
 		var new_box_sprite := Sprite2D.new()
 		new_box_sprite.position = position
-		new_box_sprite.offset = Vector2(8,8)
 		new_box_sprite.texture = normal_box_texture
 		main_editor.sprites_list.add_child(new_box_sprite)
 		new_box_sprite.visible = true

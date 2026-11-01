@@ -2,9 +2,11 @@ extends Node
 class_name SaveLevel
 
 const DEFAULT_LEVEL_PATH := "user://levels/level_1.json"
+const LEVEL_FORMAT_VERSION := 2
 
 func save_level(sprites_list : Node2D, colliding_layer : TileMapLayer, not_colliding_layer : TileMapLayer, path: String = DEFAULT_LEVEL_PATH) -> void:
 	var level_data := {
+		"version": LEVEL_FORMAT_VERSION,
 		"tiles": {
 			"colliding": _save_tile_layer(colliding_layer),
 			"not_colliding": _save_tile_layer(not_colliding_layer)

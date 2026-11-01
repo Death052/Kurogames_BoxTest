@@ -49,11 +49,13 @@ func load_level(path: String = LEVEL_PATH) -> void:
 		push_error("Level data is not a valid JSON object.")
 		return
 
+	var level_version := int(parsed.get("version", 1))
+
 	_load_tile_layer(parsed.get("tiles", {}).get("colliding", []), colliding_layer)
 	_load_tile_layer(parsed.get("tiles", {}).get("not_colliding", []), not_colliding_layer)
 	var saved_objects: Array = parsed.get("objects", [])
 	var saved_box_goals: Array = parsed.get("box_goals", saved_objects)
-	_load_objects(saved_objects, saved_box_goals)
+	_load_objects(saved_objects, saved_box_goals, level_version)
 
 func _load_tile_layer(saved_tiles: Array, layer: TileMapLayer) -> void:
 	for tile in saved_tiles:
@@ -89,9 +91,12 @@ func load_box_resources(folder_path: String) -> Array[Resource]:
 	return resources
 
 
-func _load_objects(saved_objects: Array, goal_objects: Array) -> void:
+func _load_objects(saved_objects: Array, goal_objects: Array, level_version: int) -> void:
 	for object_data in saved_objects:
 		var object_type: String = object_data["type"]
+		var object_position := Vector2(float(object_data["x"]), float(object_data["y"]))
+		if level_version < 2:
+			object_position += colliding_layer.map_to_local(Vector2i.ZERO)
 		#var texture: Texture2D = TEXTURES.get(object_type)
 		var object_instance = TEXTURES.get(object_type)
 		#if texture == null:
@@ -100,20 +105,20 @@ func _load_objects(saved_objects: Array, goal_objects: Array) -> void:
 		# if the object is a player
 		if object_type == "player":
 			var player_instance : Player = object_instance.instantiate()
-			player_instance.global_position = Vector2(float(object_data["x"]), float(object_data["y"]))
+			player_instance.global_position = object_position
 			player_instance.add_to_group("Player") 
 			add_child(player_instance)
 		# if the object is a goal
 		if object_type == "goal":
 			var goal_instance : Goal = object_instance.instantiate()
-			goal_instance.global_position = Vector2(float(object_data["x"]), float(object_data["y"]))
+			goal_instance.global_position = object_position
 			# all goals in custom levels have -1 level num
 			goal_instance.goal_level_num = -1
 			add_child(goal_instance)
 		# if the object is a normal box
 		if object_type == "normal_box":
 			var normal_box_instance : NormalBox = object_instance.instantiate()
-			var box_position := Vector2(float(object_data["x"]), float(object_data["y"]))
+			var box_position := object_position
 			normal_box_instance.position = box_position
 			normal_box_instance.box_position = box_position
 			normal_box_instance.z_index = 0
@@ -124,7 +129,7 @@ func _load_objects(saved_objects: Array, goal_objects: Array) -> void:
 		if object_type == "red_box" or object_type == "yellow_box" or object_type == "blue_box":
 			# instantiate box and set box position
 			var box_goal_instance : GoalBoxPair = coloured_box_pair.instantiate()
-			var box_position := Vector2(float(object_data["x"]), float(object_data["y"]))
+			var box_position := object_position
 			box_goal_instance.position = box_position
 			box_goal_instance.box_position = Vector2.ZERO
 			# allow y sort
@@ -140,10 +145,9 @@ func _load_objects(saved_objects: Array, goal_objects: Array) -> void:
 			var goal_type := object_type.replace("_box", "_goal")
 			for goal_data in goal_objects:
 				if goal_data.get("type") == goal_type:
-					var goal_position := Vector2(
-						float(goal_data["x"]),
-						float(goal_data["y"])
-					)
+					var goal_position := Vector2(float(goal_data["x"]), float(goal_data["y"]))
+					if level_version < 2:
+						goal_position += colliding_layer.map_to_local(Vector2i.ZERO)
 					box_goal_instance.goal_position = goal_position - box_position
 					break
 			add_child(box_goal_instance)

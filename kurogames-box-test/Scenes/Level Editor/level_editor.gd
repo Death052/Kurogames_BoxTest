@@ -1,7 +1,6 @@
 extends Node2D
 class_name MainEditor
 
-const GRID_SIZE := 16
 const COLLIDING_TILES := preload("res://Sprites/Tilesets/Colliding.tres")
 const NOT_COLLIDING_TILES := preload("res://Sprites/Tilesets/NotColliding.tres")
 # sub editors
@@ -351,8 +350,5 @@ func _select_tile(layer: TileMapLayer, source_id: int, atlas_coords: Vector2i) -
 	mode_label.text = "Selected tile %s" % atlas_coords
 
 func _snap_to_grid(position: Vector2) -> Vector2:
-	# Keep tiles aligned with the same 16-pixel grid used by the tilemaps.
-	return Vector2(
-		round(position.x / GRID_SIZE) * GRID_SIZE,
-		round(position.y / GRID_SIZE) * GRID_SIZE
-	)
+	# Snap to the center of the tile cell so objects share the tilemap's coordinate origin.
+	return colliding_layer.map_to_local(colliding_layer.local_to_map(position))

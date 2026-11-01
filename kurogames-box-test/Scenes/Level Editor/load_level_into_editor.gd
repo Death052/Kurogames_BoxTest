@@ -32,7 +32,7 @@ func load_json_into_editor() -> void:
 
 	var saved_objects = parsed.get("objects", [])
 	if saved_objects is Array:
-		_load_objects(saved_objects)
+		_load_objects(saved_objects, int(parsed.get("version", 1)))
 
 func _load_tile_layer(saved_tiles, layer: TileMapLayer) -> void:
 	if not saved_tiles is Array or layer == null:
@@ -56,7 +56,7 @@ func _load_tile_layer(saved_tiles, layer: TileMapLayer) -> void:
 			int(tile.get("alternative", 0))
 		)
 
-func _load_objects(saved_objects: Array) -> void:
+func _load_objects(saved_objects: Array, level_version: int) -> void:
 	for child in main_editor.sprites_list.get_children():
 		var sprite := child as Sprite2D
 		if sprite == null:
@@ -75,6 +75,8 @@ func _load_objects(saved_objects: Array) -> void:
 			continue
 
 		var position := Vector2(float(object_data["x"]), float(object_data["y"]))
+		if level_version < 2:
+			position += main_editor.colliding_layer.map_to_local(Vector2i.ZERO)
 		var sprite := _get_fixed_sprite(object_type)
 		if sprite != null:
 			sprite.texture = _get_object_texture(object_type)
@@ -131,7 +133,6 @@ func _create_normal_box(position: Vector2) -> void:
 	var normal_box := Sprite2D.new()
 	normal_box.name = "NormalBox"
 	normal_box.position = position
-	normal_box.offset = Vector2(8, 8)
 	normal_box.texture = main_editor.others_editor.normal_box_texture
 	normal_box.visible = true
 	main_editor.sprites_list.add_child(normal_box)
