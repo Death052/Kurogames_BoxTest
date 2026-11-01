@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dftl7qg4163c0"]
+
+[ext_resource type="Script" uid="uid://ctljk8pxguruf" path="res://Systems/SoundManager.gd" id="1_sm2tf"]
+[ext_resource type="AudioStream" uid="uid://dusmg77mat8g7" path="res://Audio/LevelSelect_BGM.mp3" id="2_qixve"]
+[ext_resource type="AudioStream" uid="uid://cirsxeotl7exc" path="res://Audio/InGame_BGM.mp3" id="3_0hehx"]
+[ext_resource type="AudioStream" uid="uid://bsj8qhhubvig6" path="res://Audio/Editor_BGM.mp3" id="4_mjqhu"]
+
+[node name="AudioManager" type="Node2D" unique_id=966474691]
+script = ExtResource("1_sm2tf")
+
+[node name="BGM" type="Node" parent="." unique_id=895610419]
+unique_name_in_owner = true
+
+[node name="LevelSelection_BGM" type="AudioStreamPlayer" parent="BGM" unique_id=1178158638]
+stream = ExtResource("2_qixve")
+
+[node name="InGame_BGM" type="AudioStreamPlayer" parent="BGM" unique_id=1840307494]
+stream = ExtResource("3_0hehx")
+
+[node name="Editor_BGM" type="AudioStreamPlayer" parent="BGM" unique_id=2023845443]
+stream = ExtResource("4_mjqhu")
+
+[node name="SoundFX" type="Node" parent="." unique_id=1725479148]
+unique_name_in_owner = true
+
+[node name="Push_BGM" type="AudioStreamPlayer" parent="SoundFX" unique_id=220159821]
+
+[node name="Walk_BGM" type="AudioStreamPlayer" parent="SoundFX" unique_id=524955367]
+
+[node name="PressureActivate_BGM" type="AudioStreamPlayer" parent="SoundFX" unique_id=716935452]

@@ -6,18 +6,18 @@
 			"y": 0.0
 		},
 		{
-			"type": "yellow_box",
-			"x": 80.0,
+			"type": "red_box",
+			"x": 112.0,
 			"y": -16.0
 		},
 		{
-			"type": "yellow_goal",
-			"x": 80.0,
+			"type": "red_goal",
+			"x": 112.0,
 			"y": -80.0
 		},
 		{
 			"type": "goal",
-			"x": 32.0,
+			"x": 64.0,
 			"y": -48.0
 		}
 	],

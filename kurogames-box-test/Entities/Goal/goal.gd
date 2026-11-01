@@ -89,7 +89,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 				# go back to level select
 				TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 				await TransitionUi.slide_in(0.5)
-				await get_tree().create_timer(0.3).timeout
+				#await get_tree().create_timer(0.3).timeout
 				# Choose to either go to the editor
 				if GameManager.in_editor_test == true:
 					get_tree().change_scene_to_file("res://Scenes/Level Editor/level_editor.tscn")
@@ -99,7 +99,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 			# Go back to the level screen
 			TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 			await TransitionUi.slide_in(0.5)
-			await get_tree().create_timer(0.3).timeout
+			#await get_tree().create_timer(0.3).timeout
 			get_tree().change_scene_to_file("res://Scenes/Level Selection/level_selection_screen.tscn")
 			return
 			

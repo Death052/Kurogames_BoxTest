@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://x3bnbio8uv8m" path="res://Scenes/Level Selection/level_selection_ui.gd" id="1_tgqro"]
 [ext_resource type="Script" uid="uid://bfjuh158nbd1p" path="res://Scenes/Level Selection/LevelButtonPress.gd" id="2_pgj7p"]
+[ext_resource type="Script" uid="uid://drd5em0gb7n44" path="res://Scenes/Level Selection/EditorButtonPress.gd" id="3_jglkl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_background"]
 bg_color = Color(0.04, 0.06, 0.1, 1)
@@ -27,6 +28,25 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_saved_levels"]
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+bg_color = Color(0.06, 0.09, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.2, 0.35, 0.5, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jglkl"]
+bg_color = Color(0.28194702, 0.3177633, 0.4809339, 1)
 
 [node name="LevelSelectionScreen" type="Control" unique_id=128417322]
 layout_mode = 3
@@ -112,8 +132,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
 text = "Level 
 Editor"
-script = ExtResource("2_pgj7p")
-scene_path = "res://Scenes/Level Editor/level_editor.tscn"
+script = ExtResource("3_jglkl")
+editor_level_path = "res://Scenes/Level Editor/level_editor.tscn"
+custom_level_path = "res://Scenes/Custom Level/custom_level.tscn"
 
 [node name="BackButtonMargin" type="MarginContainer" parent="CenterContainer/Content" unique_id=1473107464]
 custom_minimum_size = Vector2(0, 32)
@@ -121,10 +142,86 @@ layout_mode = 2
 theme_override_constants/margin_top = 36
 
 [node name="Back Button" type="Button" parent="CenterContainer/Content/BackButtonMargin" unique_id=506276182]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_button")
 theme_override_styles/hover = SubResource("StyleBoxFlat_button_hover")
+text = "Return"
+
+[node name="SavedLevelsPanel" type="PanelContainer" parent="." unique_id=2073500010]
+visible = false
+custom_minimum_size = Vector2(520, 333.9)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -298.93
+offset_top = -166.95001
+offset_right = 298.93
+offset_bottom = 166.95001
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_saved_levels")
+
+[node name="Content" type="VBoxContainer" parent="SavedLevelsPanel" unique_id=2073500011]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Header" type="Label" parent="SavedLevelsPanel/Content" unique_id=2073500018]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Manage Custom Levels"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SavedLevelsPanel/Content" unique_id=2073500012]
+custom_minimum_size = Vector2(0, 188)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="LevelList" type="VBoxContainer" parent="SavedLevelsPanel/Content/ScrollContainer" unique_id=2073500013]
+custom_minimum_size = Vector2(564.465, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="LevelRow" type="HBoxContainer" parent="SavedLevelsPanel/Content/ScrollContainer/LevelList" unique_id=2073500014]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Name" type="Label" parent="SavedLevelsPanel/Content/ScrollContainer/LevelList/LevelRow" unique_id=2073500015]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Level Name"
+vertical_alignment = 1
+
+[node name="Play" type="Button" parent="SavedLevelsPanel/Content/ScrollContainer/LevelList/LevelRow" unique_id=2073500016]
+custom_minimum_size = Vector2(72, 40)
+layout_mode = 2
+text = "Play"
+
+[node name="Edit" type="Button" parent="SavedLevelsPanel/Content/ScrollContainer/LevelList/LevelRow" unique_id=2073500017]
+custom_minimum_size = Vector2(72, 40)
+layout_mode = 2
+text = "Edit"
+
+[node name="Delete" type="Button" parent="SavedLevelsPanel/Content/ScrollContainer/LevelList/LevelRow" unique_id=2073500019]
+custom_minimum_size = Vector2(72, 40)
+layout_mode = 2
+text = "Delete"
+
+[node name="CenterContainer" type="CenterContainer" parent="SavedLevelsPanel/Content" unique_id=1304008157]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="SavedLevelsPanel/Content/CenterContainer" unique_id=1491159398]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_jglkl")
 text = "Return"

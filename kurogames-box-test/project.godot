@@ -20,11 +20,13 @@ ShaderManager="*uid://dklkaywxyyb61"
 GameUi="*uid://2t3bdy4q5h2j"
 TransitionUi="*uid://cp5nl2mdhauyc"
 GameManager="*uid://ybpy3qc730oj"
+SoundManager="*res://Scenes/audio_manager.tscn"
 
 [file_customization]
 
 folder_colors={
 "res://Animation/": "orange",
+"res://Audio/": "teal",
 "res://Entities/": "red",
 "res://Scenes/": "yellow",
 "res://Shaders/": "purple",

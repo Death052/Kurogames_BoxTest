@@ -16,5 +16,5 @@ func _ready() -> void:
 func _on_pressed() -> void:
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_in(0.5)
-	await get_tree().create_timer(0.3).timeout
+	#await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file(scene_path)

@@ -87,6 +87,7 @@ text = "0"
 horizontal_alignment = 2
 
 [node name="ButtonMarginContainer" type="MarginContainer" parent="." unique_id=366799475]
+visible = false
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -122,6 +123,50 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bw2rt")
 text = "Back"
 
 [node name="Retry" type="Button" parent="ButtonMarginContainer/PanelContainer/MarginContainer/HBoxContainer" unique_id=1009465979]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_xjnnq")
+text = "Retry
+"
+
+[node name="ButtonMarginContainerEditor" type="MarginContainer" parent="." unique_id=2143184936]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -84.0
+offset_right = 342.2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="ButtonMarginContainerEditor" unique_id=1235247639]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ui")
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonMarginContainerEditor/PanelContainer" unique_id=361796627]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ButtonMarginContainerEditor/PanelContainer/MarginContainer" unique_id=2059040837]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ReturnToEditor" type="Button" parent="ButtonMarginContainerEditor/PanelContainer/MarginContainer/HBoxContainer" unique_id=747905010]
+custom_minimum_size = Vector2(120, 52)
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_bw2rt")
+text = "Return to Editor"
+
+[node name="Retry" type="Button" parent="ButtonMarginContainerEditor/PanelContainer/MarginContainer/HBoxContainer" unique_id=908901272]
 custom_minimum_size = Vector2(120, 52)
 layout_mode = 2
 theme_override_font_sizes/font_size = 22

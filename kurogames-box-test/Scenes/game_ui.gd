@@ -1,14 +1,40 @@
 extends CanvasLayer
 
+@onready var normal_gameplay_container :  MarginContainer = $ButtonMarginContainer
+@onready var editor_gameplay_container :  MarginContainer = $ButtonMarginContainerEditor
+
 @onready var total_boxes_label: Label = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/TotalBoxesLabel
 @onready var boxes_left_label: Label = $MarginContainer/PanelContainer/MarginContainer/HBoxContainer/BoxesLeftLabel
 
 @onready var back_btn : Button = $ButtonMarginContainer/PanelContainer/MarginContainer/HBoxContainer/Back
 @onready var retry_btn : Button = $ButtonMarginContainer/PanelContainer/MarginContainer/HBoxContainer/Retry
 
+@onready var return_to_editor_btn : Button = $ButtonMarginContainerEditor/PanelContainer/MarginContainer/HBoxContainer/ReturnToEditor
+@onready var retry_btn_2 : Button = $ButtonMarginContainerEditor/PanelContainer/MarginContainer/HBoxContainer/Retry
+
 func _ready() -> void:
+	get_tree().scene_changed.connect(_on_scene_changed)
+	_connect_buttons()
+	_refresh_gameplay_mode()
+
+func _connect_buttons() -> void:
 	back_btn.pressed.connect(_on_back_button_pressed)
 	retry_btn.pressed.connect(_on_retry_button_pressed)
+	return_to_editor_btn.pressed.connect(_return_to_editor_pressed)
+	retry_btn_2.pressed.connect(_on_retry_button_pressed)
+
+func _on_scene_changed() -> void:
+	_refresh_gameplay_mode()
+
+func _refresh_gameplay_mode() -> void:
+	if GameManager.in_editor_test == false:
+		print(":DDD in normal gameplay")
+		editor_gameplay_container.visible = false
+		normal_gameplay_container.visible = true
+	else:
+		print(":DDD in editor gameplay")
+		editor_gameplay_container.visible = true
+		normal_gameplay_container.visible = false
 
 func _process(_delta: float) -> void:
 	# make sure can exclude scenes from showing the game ui 
@@ -28,16 +54,22 @@ func update_box_count_ui(goal_box_pairs_in_scene : Array[GoalBoxPair]) -> void:
 			boxes_left += 1
 	update_box_counts(goal_box_pairs_in_scene.size(), boxes_left)
 
+func _return_to_editor_pressed() -> void:
+	# return to level editor (button only shows up when in editor mode)
+	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
+	await TransitionUi.slide_in(0.5)
+	get_tree().change_scene_to_file("res://Scenes/Level Editor/level_editor.tscn")
+
 func _on_back_button_pressed() -> void:
 	# return to level selection
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_in(0.5)
-	await get_tree().create_timer(0.3).timeout
+	#await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://Scenes/Level Selection/level_selection_screen.tscn")
 
 func _on_retry_button_pressed() -> void:
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_in(0.5)
-	await get_tree().create_timer(0.3).timeout
+	#await get_tree().create_timer(0.3).timeout
 	get_tree().reload_current_scene()
 	

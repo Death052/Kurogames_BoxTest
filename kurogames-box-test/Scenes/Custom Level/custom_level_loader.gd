@@ -33,6 +33,9 @@ func _ready() -> void:
 	load_level(GameManager.loaded_level_json)
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_out(0.5)
+	# play the music
+	SoundManager.play_bgm("InGame_BGM")
+	
 
 func load_level(path: String = LEVEL_PATH) -> void:
 	var file := FileAccess.open(path, FileAccess.READ)

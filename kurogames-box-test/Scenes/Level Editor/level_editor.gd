@@ -75,6 +75,8 @@ var saved_menu : int
 func _ready() -> void:
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_out(0.5)
+	# play the music
+	SoundManager.play_bgm("Editor_BGM")
 	# make sure game knows its in the editor
 	GameManager.in_editor_test = true
 	currently_selected_btn = -1
@@ -144,7 +146,7 @@ func _cancel_new_save() -> void:
 func _play_game() -> void:
 	TransitionUi.set_transition_color(Color(0.0, 0.786, 0.786, 1.0))
 	await TransitionUi.slide_in(0.5)
-	await get_tree().create_timer(0.3).timeout
+	#await get_tree().create_timer(0.3).timeout
 	get_tree().change_scene_to_file("res://Scenes/Custom Level/custom_level.tscn")
 
 
